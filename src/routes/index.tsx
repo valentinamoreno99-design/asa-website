@@ -375,7 +375,7 @@ function Index() {
                 <Reveal
                   key={project.num}
                   delay={i * 90}
-                  className={i === 1 ? "lg:mt-32" : undefined}
+                  className={i === 1 ? "lg:mt-32" : ""}
                 >
                   <div className="overflow-hidden">
                     <img
