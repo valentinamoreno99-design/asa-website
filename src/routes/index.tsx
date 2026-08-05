@@ -262,6 +262,7 @@ function Index() {
               <p className="type-label mb-8 text-muted-foreground">Selected client experience</p>
               <ClientLogos />
             </Reveal>
+          </div>
         </section>
 
         {/* Operational credibility */}
