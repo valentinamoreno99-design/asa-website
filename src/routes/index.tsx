@@ -48,6 +48,7 @@ const CHALLENGES = [
     body: "Critical knowledge is concentrated in too few people, supervisors are promoted without sufficient preparation or teams depend excessively on external escalation.",
     risk: "Decision quality, troubleshooting effectiveness, team autonomy and operational continuity.",
     response: "Specialized courses, mentoring, shadowing, guided practice and technical leadership development.",
+    image: engineDetail,
   },
   {
     num: "02",
@@ -55,6 +56,7 @@ const CHALLENGES = [
     body: "Aircraft remain on ground longer than necessary because of fragmented troubleshooting, slow decisions, recurring defects or unclear coordination.",
     risk: "Dispatch reliability, recovery time, operational continuity and cost.",
     response: "MCC/MOC support, recurrent-defect analysis, troubleshooting and recovery coordination.",
+    image: mcc,
   },
   {
     num: "03",
@@ -62,6 +64,7 @@ const CHALLENGES = [
     body: "Planning, engineering, reliability and records teams are overloaded or lack specialized capacity for a critical period or project.",
     risk: "Maintenance execution, anticipation of technical risk, compliance and aircraft availability.",
     response: "Senior reinforcement for planning, engineering, reliability, records and continuing-airworthiness activities.",
+    image: planningOffice,
   },
   {
     num: "04",
@@ -69,6 +72,7 @@ const CHALLENGES = [
     body: "Engineering, planning, MCC/MOC, maintenance, supply and operations do not share the same criteria, priorities or traceability.",
     risk: "Speed, first-time-right performance, accountability and decision quality.",
     response: "Process review, interface clarification, decision criteria, governance support and embedded mentoring.",
+    image: engineDetail,
   },
   {
     num: "05",
@@ -76,6 +80,7 @@ const CHALLENGES = [
     body: "Findings, incomplete evidence, records gaps or unclear action ownership increase regulatory and contractual exposure.",
     risk: "Compliance, reputation, schedule and technical asset value.",
     response: "Audit readiness, corrective-action support, record reviews, evidence management and closure follow-up.",
+    image: auditRecords,
   },
   {
     num: "06",
@@ -83,6 +88,7 @@ const CHALLENGES = [
     body: "Delivery, redelivery, inspections and MRO events require tighter technical control and evidence management.",
     risk: "Contractual position, transition schedule, cost and aircraft value.",
     response: "Inspection support, records review, MRO supervision, transition control and technical evidence management.",
+    image: transitionApron,
   },
 ];
 
