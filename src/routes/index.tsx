@@ -257,7 +257,11 @@ function Index() {
             <p className="type-meta mt-6 text-muted-foreground">
               Leadership experience gained while serving these organizations.
             </p>
-          </div>
+
+            <Reveal delay={120} className="mt-20">
+              <p className="type-label mb-8 text-muted-foreground">Selected client experience</p>
+              <ClientLogos />
+            </Reveal>
         </section>
 
         {/* Operational credibility */}
@@ -297,25 +301,7 @@ function Index() {
               </p>
             </Reveal>
 
-            <div className="mt-20 grid gap-px border border-rule bg-rule md:grid-cols-2 xl:grid-cols-3">
-              {CHALLENGES.map((item, i) => (
-                <Reveal key={item.num} delay={(i % 3) * 70} className="flex flex-col bg-background p-8 md:p-10">
-                  <span className="type-meta text-asa-blue">{item.num}</span>
-                  <h3 className="type-h3 mt-8 max-w-[18ch]">{item.title}</h3>
-                  <p className="mt-5 text-[0.95rem] leading-relaxed text-muted-foreground">{item.body}</p>
-                  <dl className="mt-auto pt-10">
-                    <div className="border-t border-rule py-4">
-                      <dt className="type-label text-muted-foreground">At risk</dt>
-                      <dd className="type-meta mt-2">{item.risk}</dd>
-                    </div>
-                    <div className="border-t border-rule py-4">
-                      <dt className="type-label text-asa-blue">ASA response</dt>
-                      <dd className="type-meta mt-2">{item.response}</dd>
-                    </div>
-                  </dl>
-                </Reveal>
-              ))}
-            </div>
+            <ChallengeStack items={CHALLENGES} />
           </div>
         </section>
 
