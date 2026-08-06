@@ -1,13 +1,19 @@
-import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { FeatureSteps, type Feature } from "@/components/ui/feature-section";
+import mcc from "@/assets/mcc.jpg";
+import engineDetail from "@/assets/engine-detail.jpg";
+import planningOffice from "@/assets/planning-office.jpg";
+import auditRecords from "@/assets/audit-records.jpg";
+import transitionApron from "@/assets/transition-apron.jpg";
 
-const CAPABILITIES = [
+const CAPABILITIES: Feature[] = [
   {
-    num: "01",
+    step: "01",
     title: "Technical Training & Leadership Development",
-    outcome: "Build stronger technical teams and more capable operational leaders.",
-    body: "We develop technical and leadership capability through specialized courses, mentoring, shadowing and applied practice designed around the realities of the client's operation.",
-    includes: [
+    content:
+      "We develop technical and leadership capability through specialized courses, mentoring, shadowing and applied practice designed around the realities of the client's operation.",
+    image: engineDetail,
+    items: [
       "Specialized and ATA-focused courses",
       "Advanced troubleshooting",
       "Mentoring, coaching and shadowing",
@@ -17,11 +23,12 @@ const CAPABILITIES = [
     ],
   },
   {
-    num: "02",
+    step: "02",
     title: "MCC, MOC & Line Technical Operations",
-    outcome: "Protect fleet availability through faster, better-controlled technical decisions.",
-    body: "We reinforce technical control and line decision-making to improve troubleshooting, deferred-defect management, recovery coordination and the traceability of operational decisions.",
-    includes: [
+    content:
+      "We reinforce technical control and line decision-making to improve troubleshooting, deferred-defect management, recovery coordination and the traceability of operational decisions.",
+    image: mcc,
+    items: [
       "MCC / MOC support",
       "Defect and recurrent-defect analysis",
       "Deferred-defect and HIL follow-up",
@@ -31,11 +38,12 @@ const CAPABILITIES = [
     ],
   },
   {
-    num: "03",
+    step: "03",
     title: "Planning, Engineering & CAMO Support",
-    outcome: "Strengthen continuing airworthiness and execution capacity without losing regulatory control.",
-    body: "We reinforce planning, engineering and continuing-airworthiness activities with senior expertise that operates inside the client's processes, approvals and regulatory responsibilities.",
-    includes: [
+    content:
+      "We reinforce planning, engineering and continuing-airworthiness activities with senior expertise that operates inside the client's processes, approvals and regulatory responsibilities.",
+    image: planningOffice,
+    items: [
       "Maintenance planning and work packages",
       "Engineering and maintenance-program support",
       "AD / SB control",
@@ -45,11 +53,12 @@ const CAPABILITIES = [
     ],
   },
   {
-    num: "04",
+    step: "04",
     title: "Compliance, Audits & Asset Protection",
-    outcome: "Reduce exposure and protect the technical and contractual value of the aircraft.",
-    body: "We provide the technical control, evidence management and senior oversight required for audits, records, MRO events, aircraft transitions and asset-protection projects.",
-    includes: [
+    content:
+      "We provide the technical control, evidence management and senior oversight required for audits, records, MRO events, aircraft transitions and asset-protection projects.",
+    image: auditRecords,
+    items: [
       "Audit preparation and finding closure",
       "Corrective actions",
       "Compliance and records reviews",
@@ -59,11 +68,12 @@ const CAPABILITIES = [
     ],
   },
   {
-    num: "05",
+    step: "05",
     title: "Operational Strategy & Transformation",
-    outcome: "Improve technical performance while the operation continues to run.",
-    body: "We assess the current operation, define practical strategies and support implementation to improve performance, reduce risk and strengthen the technical organization while it continues operating.",
-    includes: [
+    content:
+      "We assess the current operation, define practical strategies and support implementation to improve performance, reduce risk and strengthen the technical organization while it continues operating.",
+    image: transitionApron,
+    items: [
       "Operational and organization assessment",
       "Operating-model analysis",
       "Governance",
@@ -75,8 +85,6 @@ const CAPABILITIES = [
 ];
 
 export function Capabilities() {
-  const [active, setActive] = useState(0);
-
   return (
     <section id="capabilities" className="bg-background py-28 md:py-44">
       <div className="mx-auto max-w-[1560px] px-6 md:px-12">
@@ -93,59 +101,9 @@ export function Capabilities() {
           </p>
         </Reveal>
 
-        <div className="mt-20 border-t border-rule">
-          {CAPABILITIES.map((item, index) => {
-            const isOpen = active === index;
-            return (
-              <div key={item.num} className="border-b border-rule">
-                <button
-                  type="button"
-                  onClick={() => setActive(isOpen ? -1 : index)}
-                  aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-start gap-6 py-8 text-left md:gap-10 md:py-10"
-                >
-                  <span
-                    className={`type-meta pt-2 transition-colors ${isOpen ? "text-asa-blue" : "text-muted-foreground"}`}
-                  >
-                    {item.num}
-                  </span>
-                  <span className="min-w-0">
-                    <span
-                      className={`type-h3 block transition-colors ${isOpen ? "text-asa-blue" : "group-hover:text-asa-blue"}`}
-                    >
-                      {item.title}
-                    </span>
-                    <span className="type-meta mt-3 block max-w-[60ch] text-muted-foreground">{item.outcome}</span>
-                  </span>
-                  <span
-                    className={`mt-2 h-px w-7 shrink-0 self-start bg-current transition-transform duration-500 md:w-10 ${
-                      isOpen ? "rotate-0 text-asa-blue" : "rotate-90 text-muted-foreground"
-                    }`}
-                  />
-                </button>
-
-                <div
-                  className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="min-h-0">
-                    <div className="grid gap-10 pb-12 md:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] md:pl-[calc(2rem+2.5rem)]">
-                      <p className="type-lead max-w-[48ch]">{item.body}</p>
-                      <ul className="grid gap-0 self-start border-t border-rule">
-                        {item.includes.map((inc) => (
-                          <li key={inc} className="type-meta border-b border-rule py-3 text-muted-foreground">
-                            {inc}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Reveal className="mt-20">
+          <FeatureSteps features={CAPABILITIES} title="" autoPlayInterval={7000} imageHeight="h-[420px] lg:h-[620px]" />
+        </Reveal>
       </div>
     </section>
   );
