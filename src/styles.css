@@ -218,6 +218,19 @@
   }
 }
 
+@keyframes asa-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  animation: asa-marquee 38s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -227,4 +240,8 @@
     transform: none !important;
     transition: none !important;
   }
+  .marquee-track {
+    animation: none !important;
+  }
 }
+
