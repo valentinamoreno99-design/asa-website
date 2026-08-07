@@ -1,16 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  GraduationCap,
+  PlaneTakeoff,
+  ClipboardList,
+  Workflow,
+  ShieldCheck,
+  PlaneLanding,
+  Wrench,
+  Layers,
+  SlidersHorizontal,
+  Handshake,
+} from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/asa/SiteHeader";
 import { Capabilities } from "@/components/asa/Capabilities";
-import { ChallengeStack } from "@/components/asa/ChallengeStack";
+import { FeatureGrid } from "@/components/ui/feature-grid";
 import { ClientLogos } from "@/components/asa/ClientLogos";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
-import heroHangar from "@/assets/hero-hangar.jpg";
+import heroAsa from "@/assets/hero-asa.jpg.asset.json";
+import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
+import nicolasPhoto from "@/assets/nicolas-takahashi.png.asset.json";
 import mcc from "@/assets/mcc.jpg";
 import engineDetail from "@/assets/engine-detail.jpg";
 import planningOffice from "@/assets/planning-office.jpg";
 import auditRecords from "@/assets/audit-records.jpg";
 import transitionApron from "@/assets/transition-apron.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
