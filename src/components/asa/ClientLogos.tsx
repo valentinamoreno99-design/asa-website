@@ -46,11 +46,12 @@ export function ClientLogos() {
         {CLIENT_TYPES.map((type) => (
           <span
             key={type}
-            className="type-label relative overflow-hidden rounded-full border border-rule px-5 py-3 text-muted-foreground transition-colors duration-500 hover:border-asa-blue hover:text-primary-foreground"
+            className="type-label group/pill relative overflow-hidden rounded-full border border-rule px-5 py-3 text-muted-foreground transition-colors duration-500 hover:border-asa-blue hover:text-primary-foreground"
           >
-            <span className="absolute inset-0 -translate-x-full bg-asa-blue transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-0" />
+            <span className="absolute inset-0 -translate-x-full bg-asa-blue transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/pill:translate-x-0" />
             <span className="relative">{type}</span>
           </span>
+
         ))}
       </div>
     </div>
