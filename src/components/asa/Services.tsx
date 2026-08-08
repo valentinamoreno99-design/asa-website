@@ -98,7 +98,7 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
     <li className="group border-t border-rule" onMouseEnter={onActive} onFocus={onActive}>
       <Reveal>
 
-      <div className="grid gap-6 py-10 md:py-14 lg:grid-cols-[6rem_minmax(0,7fr)_minmax(0,6fr)] lg:gap-10">
+      <div className="grid gap-6 py-10 md:py-14 lg:grid-cols-[4rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
         <span className="type-label pt-2 text-asa-blue">{service.num}</span>
 
         <div>
