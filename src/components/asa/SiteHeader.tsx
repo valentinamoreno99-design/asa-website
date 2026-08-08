@@ -3,12 +3,13 @@ import logoDark from "@/assets/asa-logo-dark.png.asset.json";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
 
 const NAV = [
-  { label: "Capabilities", href: "#capabilities" },
+  { label: "Services", href: "#services" },
   { label: "Why ASA", href: "#why-asa" },
   { label: "Projects", href: "#projects" },
   { label: "Leadership", href: "#leadership" },
   { label: "Contact", href: "#contact" },
 ];
+
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,16 +54,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
-          <a
-            href="#contact"
-            className={`type-label hidden px-6 py-4 transition-colors md:inline-block ${
-              scrolled || open
-                ? "bg-navy text-primary-foreground hover:bg-asa-blue"
-                : "bg-asa-blue text-primary-foreground hover:bg-background hover:text-navy"
-            }`}
-          >
-            Discuss an operational challenge
-          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -73,6 +64,7 @@ export function SiteHeader() {
             {open ? "Close" : "Menu"}
           </button>
         </div>
+
       </div>
 
       {open ? (
@@ -88,14 +80,8 @@ export function SiteHeader() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="type-label mt-4 mb-6 bg-navy px-6 py-4 text-center text-primary-foreground"
-            >
-              Discuss an operational challenge
-            </a>
           </nav>
+
         </div>
       ) : null}
     </header>

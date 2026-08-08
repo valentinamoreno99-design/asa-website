@@ -1,31 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  GraduationCap,
-  PlaneTakeoff,
-  ClipboardList,
-  Workflow,
-  ShieldCheck,
-  PlaneLanding,
-  Wrench,
-  Layers,
-  SlidersHorizontal,
-  Handshake,
-} from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/asa/SiteHeader";
-import { Capabilities } from "@/components/asa/Capabilities";
-import { FeatureGrid } from "@/components/ui/feature-grid";
-import { ClientLogos } from "@/components/asa/ClientLogos";
+import { Services } from "@/components/asa/Services";
+import { WhyAsa } from "@/components/asa/WhyAsa";
+import { Experience } from "@/components/asa/Experience";
+import { Challenges } from "@/components/asa/Challenges";
+import { ContactForm } from "@/components/asa/ContactForm";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
 import heroAsa from "@/assets/hero-asa.jpg.asset.json";
 import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
 import nicolasPhoto from "@/assets/nicolas-takahashi.png.asset.json";
 import mcc from "@/assets/mcc.jpg";
 import engineDetail from "@/assets/engine-detail.jpg";
-import planningOffice from "@/assets/planning-office.jpg";
-import auditRecords from "@/assets/audit-records.jpg";
-import transitionApron from "@/assets/transition-apron.jpg";
-
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,13 +20,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ASA strengthens technical operations, protects aircraft value and builds internal capability for airlines, MROs and lessors through senior operator experience.",
+          "ASA helps airlines, MROs and lessors strengthen, solve and execute: airworthiness capacity, technical control, compliance and capability development led by senior operators.",
       },
       { property: "og:title", content: "ASA — Aviation Technical & Operational Partner" },
       {
         property: "og:description",
         content:
-          "Senior operator experience, embedded execution and capability transfer for airlines, MROs, lessors and aviation organizations.",
+          "Technical expertise for the challenges that keep your operation moving. Operator-led support across airworthiness, technical control, compliance and capability.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -48,108 +34,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const PROOF = [
-  { value: "15+ years", label: "Operator experience per consultant" },
-  { value: "Operator-led", label: "Engineering, maintenance, planning and technical control" },
-  { value: "20+ courses", label: "Specialized technical and leadership programs" },
-  { value: "Three continents", label: "Europe, Africa and the Americas" },
-];
-
-const CHALLENGES = [
-  {
-    num: "01",
-    title: "Technical capability gaps",
-    body: "Critical knowledge is concentrated in too few people, supervisors are promoted without sufficient preparation or teams depend excessively on external escalation.",
-    risk: "Decision quality, troubleshooting effectiveness, team autonomy and operational continuity.",
-    response: "Specialized courses, mentoring, shadowing, guided practice and technical leadership development.",
-    image: engineDetail,
-    icon: GraduationCap,
-  },
-  {
-    num: "02",
-    title: "Fleet availability under pressure",
-    body: "Aircraft remain on ground longer than necessary because of fragmented troubleshooting, slow decisions, recurring defects or unclear coordination.",
-    risk: "Dispatch reliability, recovery time, operational continuity and cost.",
-    response: "MCC/MOC support, recurrent-defect analysis, troubleshooting and recovery coordination.",
-    image: mcc,
-    icon: PlaneTakeoff,
-  },
-  {
-    num: "03",
-    title: "Planning and engineering capacity",
-    body: "Planning, engineering, reliability and records teams are overloaded or lack specialized capacity for a critical period or project.",
-    risk: "Maintenance execution, anticipation of technical risk, compliance and aircraft availability.",
-    response: "Senior reinforcement for planning, engineering, reliability, records and continuing-airworthiness activities.",
-    image: planningOffice,
-    icon: ClipboardList,
-  },
-  {
-    num: "04",
-    title: "Processes working in isolation",
-    body: "Engineering, planning, MCC/MOC, maintenance, supply and operations do not share the same criteria, priorities or traceability.",
-    risk: "Speed, first-time-right performance, accountability and decision quality.",
-    response: "Process review, interface clarification, decision criteria, governance support and embedded mentoring.",
-    image: engineDetail,
-    icon: Workflow,
-  },
-  {
-    num: "05",
-    title: "Compliance and audit exposure",
-    body: "Findings, incomplete evidence, records gaps or unclear action ownership increase regulatory and contractual exposure.",
-    risk: "Compliance, reputation, schedule and technical asset value.",
-    response: "Audit readiness, corrective-action support, record reviews, evidence management and closure follow-up.",
-    image: auditRecords,
-    icon: ShieldCheck,
-  },
-  {
-    num: "06",
-    title: "Transitions and asset protection",
-    body: "Delivery, redelivery, inspections and MRO events require tighter technical control and evidence management.",
-    risk: "Contractual position, transition schedule, cost and aircraft value.",
-    response: "Inspection support, records review, MRO supervision, transition control and technical evidence management.",
-    image: transitionApron,
-    icon: PlaneLanding,
-  },
-];
-
-
-const WHY = [
-  {
-    title: "Operator experience",
-    body: "ASA's authority comes from real responsibilities in engineering, maintenance, planning, technical control and leadership.",
-    icon: Wrench,
-  },
-  {
-    title: "Integrated view",
-    body: "ASA connects aircraft, process, compliance, technical capability and leadership within the same scope.",
-    icon: Layers,
-  },
-  {
-    title: "Adaptable execution",
-    body: "ASA can reinforce a team, assume a defined work package or structure an integrated project.",
-    icon: SlidersHorizontal,
-  },
-  {
-    title: "Capability that remains",
-    body: "ASA seeks to leave clearer processes, stronger criteria and teams capable of sustaining the result.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Senior proximity",
-    body: "Clients work directly with experienced specialists who understand the consequence of each technical and operational decision.",
-    icon: Handshake,
-  },
-];
-
-
-const METHOD = [
-  { step: "01", title: "Understand the operational reality", body: "Interviews, data and direct observation inside the operation." },
-  { step: "02", title: "Define the scope", body: "Boundaries, responsibilities, deliverables and success criteria in writing." },
-  { step: "03", title: "Integrate with the operation", body: "Work inside client processes, approvals and regulatory responsibilities." },
-  { step: "04", title: "Execute and follow through", body: "Delivery, traceability and closure of the agreed technical scope." },
-  { step: "05", title: "Transfer capability", body: "Criteria, documentation and mentoring that remain with the client team." },
-];
 
 const PROJECTS = [
   {
@@ -193,24 +77,13 @@ const LEADERS = [
   },
 ];
 
-
-const INQUIRIES = [
-  "Technical training",
-  "MCC/MOC and line operations",
-  "Planning, engineering and CAMO support",
-  "Compliance and asset protection",
-  "Operational assessment",
-  "Partnership",
+const FOOTER_NAV = [
+  { label: "Services", href: "#services" },
+  { label: "Why ASA", href: "#why-asa" },
+  { label: "Projects", href: "#projects" },
+  { label: "Leadership", href: "#leadership" },
+  { label: "Contact", href: "#contact" },
 ];
-
-function SectionLabel({ index, children }: { index: string; children: string }) {
-  return (
-    <p className="type-label text-muted-foreground">
-      <span className="mr-4 text-asa-blue">{index}</span>
-      {children}
-    </p>
-  );
-}
 
 function Index() {
   return (
@@ -231,192 +104,51 @@ function Index() {
           <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--navy-deep)_18%,transparent_92%)]" />
           <div className="relative mx-auto flex min-h-[92vh] max-w-[1560px] flex-col justify-end px-6 pt-40 pb-16 md:px-12 md:pb-24">
             <p className="type-label mb-12 text-light-blue">Aviation technical & operational partner</p>
-            <h1 className="type-display max-w-[15ch]">
-              Expertise that drives
-              <br />
-              operational impact.
+            <h1 className="type-display max-w-[17ch]">
+              Technical expertise for the challenges that keep your operation moving.
             </h1>
             <div className="mt-14 grid gap-10 border-t border-rule-invert pt-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
               <p className="type-lead max-w-[52ch] text-light-blue">
-                We help airlines, MROs, lessors and aviation organizations strengthen technical operations, protect
-                aircraft value and build lasting internal capability through senior operator experience and specialized
-                execution.
+                ASA supports airlines, MROs and lessors in strengthening technical capability, solving operational
+                problems and executing the work that keeps aircraft available and compliant.
               </p>
               <div className="flex flex-wrap items-start gap-4 lg:justify-end">
                 <a
                   href="#contact"
                   className="type-label bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy"
                 >
-                  Discuss an operational challenge
+                  Start a conversation
                 </a>
                 <a
-                  href="#capabilities"
+                  href="#services"
                   className="type-label border border-rule-invert px-8 py-5 transition-colors hover:border-light-blue"
                 >
-                  Explore our capabilities
+                  Explore our services
                 </a>
               </div>
             </div>
-            <p className="type-meta mt-12 text-light-blue/70">
-              Senior operator experience · Embedded execution · Capability transfer
-            </p>
+            <p className="type-meta mt-12 text-light-blue/70">Strengthen · Solve · Execute</p>
           </div>
         </section>
 
-        {/* Leadership experience */}
-        <section className="bg-warm-white py-28 md:py-44">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-              <div>
-                <div className="mb-10">
-                  <SectionLabel index="01">Leadership experience</SectionLabel>
-                </div>
-                <h2 className="type-h2 max-w-[15ch]">Experience built inside aviation operations.</h2>
-              </div>
-              <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
-                ASA's specialists bring leadership experience developed within airlines and aviation organizations,
-                where availability, compliance, cost and operational continuity were daily responsibilities.
-              </p>
-            </Reveal>
-
-            <Reveal delay={80} className="mt-20 grid grid-cols-2 gap-px border border-rule bg-rule md:grid-cols-4">
-              {["Airlines", "MRO organizations", "Lessors & asset owners", "OEM & technical services"].map((org) => (
-                <div key={org} className="flex min-h-32 items-end bg-warm-white p-6">
-                  <span className="type-meta text-muted-foreground">{org}</span>
-                </div>
-              ))}
-            </Reveal>
-            <p className="type-meta mt-6 text-muted-foreground">
-              Leadership experience gained while serving these organizations.
-            </p>
-
-            <Reveal delay={120} className="mt-20">
-              <p className="type-label mb-8 text-muted-foreground">Selected client experience</p>
-              <ClientLogos />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Operational credibility */}
-        <section className="bg-navy py-28 text-primary-foreground md:py-44">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="border-t border-rule-invert pt-8">
-              <p className="type-label mb-10 text-light-blue/70">
-                <span className="mr-4 text-light-blue">02</span>Operational credibility
-              </p>
-              <h2 className="type-h2 max-w-[18ch]">Senior expertise grounded in real operations.</h2>
-            </Reveal>
-
-            <div className="mt-24 grid gap-px bg-rule-invert md:grid-cols-2 xl:grid-cols-4">
-              {PROOF.map((item, i) => (
-                <Reveal key={item.value} delay={i * 70} className="bg-navy pt-8 md:px-8 md:first:pl-0">
-                  <p className="type-h2 text-light-blue">{item.value}</p>
-                  <p className="type-meta mt-6 max-w-[26ch] pb-8 text-primary-foreground/70">{item.label}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Operational challenges */}
-        <section className="bg-background py-24 md:py-32">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-              <div>
-                <div className="mb-10">
-                  <SectionLabel index="03">Operational challenges</SectionLabel>
-                </div>
-                <h2 className="type-h2 max-w-[16ch]">Complex operations demand more than isolated solutions.</h2>
-              </div>
-              <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
-                Availability, compliance, cost, asset value and team capability are interconnected. ASA helps technical
-                leaders address these pressures as one operating system.
-              </p>
-            </Reveal>
-
-            <div className="mt-16">
-              <FeatureGrid items={CHALLENGES} />
-            </div>
-          </div>
-        </section>
-
-
-        <Capabilities />
-
-        {/* Why ASA */}
-        <section id="why-asa" className="bg-warm-white py-24 md:py-32">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="border-t border-rule pt-8">
-              <div className="mb-10">
-                <SectionLabel index="05">Why ASA</SectionLabel>
-              </div>
-              <h2 className="type-h2 max-w-[16ch]">Experience that moves beyond recommendations.</h2>
-            </Reveal>
-
-            <div className="mt-16 grid gap-px border border-rule bg-rule sm:grid-cols-2 xl:grid-cols-5">
-              {WHY.map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <Reveal
-                    key={item.title}
-                    delay={i * 60}
-                    className="group flex flex-col bg-warm-white p-8"
-                  >
-                    <span className="flex size-11 items-center justify-center border border-rule text-asa-blue transition-colors duration-500 group-hover:border-asa-blue group-hover:bg-asa-blue group-hover:text-primary-foreground">
-                      <Icon size={18} strokeWidth={1.6} />
-                    </span>
-                    <h3 className="mt-8 font-display text-lg leading-snug tracking-tight">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-        {/* How we work */}
-        <section className="bg-navy-deep py-28 text-primary-foreground md:py-44">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="grid gap-10 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-              <div>
-                <p className="type-label mb-10 text-light-blue/70">
-                  <span className="mr-4 text-light-blue">06</span>How we work
-                </p>
-                <h2 className="type-h2 max-w-[15ch]">From operational reality to lasting capability.</h2>
-              </div>
-            </Reveal>
-
-            <ol className="mt-24 grid gap-px bg-rule-invert md:grid-cols-2 xl:grid-cols-5">
-              {METHOD.map((item, i) => (
-                <Reveal as="li" key={item.step} delay={i * 60} className="bg-navy-deep pt-8 xl:px-6 xl:first:pl-0">
-                  <span className="type-meta text-light-blue">{item.step}</span>
-                  <span className="mt-1 mb-6 block h-px w-full bg-rule-invert" />
-                  <h3 className="type-h3 max-w-[16ch]">{item.title}</h3>
-                  <p className="type-meta mt-4 max-w-[28ch] pb-8 text-primary-foreground/70">{item.body}</p>
-                </Reveal>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <Services />
+        <WhyAsa />
+        <Experience />
+        <Challenges />
 
         {/* Projects */}
-        <section id="projects" className="bg-background py-28 md:py-44">
+        <section id="projects" className="bg-warm-white py-24 md:py-36">
           <div className="mx-auto max-w-[1560px] px-6 md:px-12">
             <Reveal className="border-t border-rule pt-8">
-              <div className="mb-10">
-                <SectionLabel index="07">Selected operational projects</SectionLabel>
-              </div>
+              <p className="type-label mb-10 text-muted-foreground">
+                <span className="mr-4 text-asa-blue">05</span>Selected projects
+              </p>
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
 
             <div className="mt-20 grid gap-x-16 gap-y-24 lg:grid-cols-2">
               {PROJECTS.map((project, i) => (
-                <Reveal
-                  key={project.num}
-                  delay={i * 90}
-                  className={i === 1 ? "lg:mt-32" : ""}
-                >
+                <Reveal key={project.num} delay={i * 90} className={i === 1 ? "lg:mt-32" : ""}>
                   <div className="overflow-hidden">
                     <img
                       src={project.image}
@@ -453,32 +185,40 @@ function Index() {
         </section>
 
         {/* Leadership */}
-        <section id="leadership" className="bg-warm-white py-28 md:py-44">
+        <section id="leadership" className="bg-background py-24 md:py-36">
           <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="border-t border-rule pt-8">
-              <div className="mb-10">
-                <SectionLabel index="08">Leadership</SectionLabel>
+            <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+              <div>
+                <p className="type-label mb-10 text-muted-foreground">
+                  <span className="mr-4 text-asa-blue">06</span>Leadership
+                </p>
+                <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
               </div>
-              <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
+              <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
+                Clients work directly with the specialists responsible for the scope — not through layers of account
+                management.
+              </p>
             </Reveal>
 
-            <div className="mt-20 grid gap-px border border-rule bg-rule lg:grid-cols-2">
+            <div className="mt-20 grid gap-x-16 gap-y-16 lg:grid-cols-2">
               {LEADERS.map((leader, i) => (
-                <Reveal key={leader.name} delay={i * 80} className="bg-warm-white p-8 md:p-12">
-                  <div className="flex items-start gap-6">
+                <Reveal key={leader.name} delay={i * 80} className="border-t border-rule pt-10">
+                  <div className="flex items-start gap-8">
                     <img
                       src={leader.photo}
                       alt={`Portrait of ${leader.name}`}
                       loading="lazy"
-                      className="size-24 shrink-0 object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-32"
+                      className="size-28 shrink-0 object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
                     />
                     <div>
                       <h3 className="type-h3">{leader.name}</h3>
                       <p className="type-label mt-4 text-asa-blue">{leader.role}</p>
                     </div>
                   </div>
-                  <p className="type-lead mt-8 max-w-[46ch] text-muted-foreground">{leader.statement}</p>
-                  <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-rule pt-6">
+                  <p className="mt-8 max-w-[50ch] text-[0.95rem] leading-relaxed text-muted-foreground">
+                    {leader.statement}
+                  </p>
+                  <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-rule pt-6">
                     {leader.expertise.map((item) => (
                       <li key={item} className="type-meta text-muted-foreground">
                         {item}
@@ -488,44 +228,26 @@ function Index() {
                 </Reveal>
               ))}
             </div>
-
-            <p className="type-meta mt-8 text-muted-foreground">
-              Supported by a network of senior aviation specialists.
-            </p>
           </div>
         </section>
 
         {/* Contact */}
-        <section id="contact" className="bg-navy py-28 text-primary-foreground md:py-44">
+        <section id="contact" className="bg-navy py-24 text-primary-foreground md:py-36">
           <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-            <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+            <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
               <div>
                 <p className="type-label mb-10 text-light-blue/70">
-                  <span className="mr-4 text-light-blue">09</span>Start a conversation
+                  <span className="mr-4 text-light-blue">07</span>Contact
                 </p>
                 <h2 className="type-h2 max-w-[14ch]">Let's discuss your operational challenge.</h2>
-                <p className="type-lead mt-10 max-w-[50ch] text-light-blue/80">
-                  Whether the priority is technical capability, fleet availability, continuing airworthiness,
-                  compliance, asset protection or operational transformation, the conversation begins with
-                  understanding your operation.
+                <p className="type-lead mt-10 max-w-[42ch] text-light-blue/80">
+                  Tell us what you need to strengthen, solve or execute. We will come back with a clear view of scope
+                  and the right technical profile.
                 </p>
-                <a
-                  href="mailto:contact@asa-aviation.com"
-                  className="type-label mt-14 inline-block bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy"
-                >
-                  Start a conversation
-                </a>
               </div>
 
-              <div className="self-end">
-                <p className="type-label mb-6 text-light-blue/70">Inquiry focus</p>
-                <ul className="border-t border-rule-invert">
-                  {INQUIRIES.map((item) => (
-                    <li key={item} className="type-meta border-b border-rule-invert py-4 text-primary-foreground/80">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <div className="lg:pt-4">
+                <ContactForm />
               </div>
             </Reveal>
           </div>
@@ -544,13 +266,13 @@ function Index() {
               className="h-8 w-auto"
             />
             <nav className="flex flex-wrap gap-x-10 gap-y-4">
-              {["Capabilities", "Why ASA", "Projects", "Leadership", "Contact"].map((item) => (
+              {FOOTER_NAV.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  key={item.href}
+                  href={item.href}
                   className="type-label text-primary-foreground/70 transition-colors hover:text-light-blue"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
             </nav>
@@ -559,7 +281,7 @@ function Index() {
             <p className="type-meta text-primary-foreground/50">
               © {new Date().getFullYear()} ASA — Advanced Solutions Aviation
             </p>
-            <p className="type-meta text-primary-foreground/50">Expertise that drives operational impact.</p>
+            <p className="type-meta text-primary-foreground/50">Strengthen. Solve. Execute.</p>
           </div>
         </div>
       </footer>
