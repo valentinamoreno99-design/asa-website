@@ -43,22 +43,12 @@ async function appendToSheet(lead: LeadInput): Promise<boolean> {
 }
 
 async function notifyByEmail(lead: LeadInput): Promise<boolean> {
-  try {
-    // Wired once the ASA email domain is verified; template: "new-lead-notification".
-    const mod: Record<string, unknown> | null = await import(
-      /* @vite-ignore */ "@/lib/email-templates/send-email"
-    ).catch(() => null);
-    const send = mod?.["sendTemplateEmail"];
-    if (typeof send !== "function") return false;
-    const result = (await (
-      send as (t: string, to: string, o: { templateData: Record<string, string> }) => Promise<{ sent: boolean }>
-    )("new-lead-notification", NOTIFY_EMAIL, { templateData: { ...lead } })) as { sent: boolean };
-    return result.sent;
-  } catch (error) {
-    console.error("Lead notification email failed:", error);
-    return false;
-  }
+  // Email notifications to NOTIFY_EMAIL are wired once the ASA sender domain is verified.
+  void lead;
+  void NOTIFY_EMAIL;
+  return false;
 }
+
 
 
 export async function deliverLead(lead: LeadInput): Promise<DeliveryResult> {
