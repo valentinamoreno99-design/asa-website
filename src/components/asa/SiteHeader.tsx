@@ -80,14 +80,8 @@ export function SiteHeader() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="type-label mt-4 mb-6 bg-navy px-6 py-4 text-center text-primary-foreground"
-            >
-              Discuss an operational challenge
-            </a>
           </nav>
+
         </div>
       ) : null}
     </header>
