@@ -118,7 +118,9 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
           ))}
         </ul>
       </div>
-    </Reveal>
+      </Reveal>
+    </li>
+
   );
 }
 
