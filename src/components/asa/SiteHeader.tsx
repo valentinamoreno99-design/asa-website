@@ -54,16 +54,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
-          <a
-            href="#contact"
-            className={`type-label hidden px-6 py-4 transition-colors md:inline-block ${
-              scrolled || open
-                ? "bg-navy text-primary-foreground hover:bg-asa-blue"
-                : "bg-asa-blue text-primary-foreground hover:bg-background hover:text-navy"
-            }`}
-          >
-            Discuss an operational challenge
-          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -74,6 +64,7 @@ export function SiteHeader() {
             {open ? "Close" : "Menu"}
           </button>
         </div>
+
       </div>
 
       {open ? (
