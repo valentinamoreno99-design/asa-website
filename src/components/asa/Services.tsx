@@ -133,7 +133,7 @@ export function Services() {
         <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
             <p className="type-label mb-10 text-muted-foreground">
-              <span className="mr-4 text-asa-blue">02</span>Services
+              <span className="mr-4 text-asa-blue">01</span>Services
             </p>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>

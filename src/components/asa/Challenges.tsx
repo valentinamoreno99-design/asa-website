@@ -30,7 +30,7 @@ export function Challenges() {
         <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
             <p className="type-label mb-10 text-muted-foreground">
-              <span className="mr-4 text-asa-blue">05</span>Why clients call ASA
+              <span className="mr-4 text-asa-blue">04</span>Why clients call ASA
             </p>
             <h2 className="type-h2 max-w-[18ch]">When technical challenges start affecting the operation.</h2>
           </div>

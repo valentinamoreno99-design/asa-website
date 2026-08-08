@@ -3,12 +3,13 @@ import logoDark from "@/assets/asa-logo-dark.png.asset.json";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
 
 const NAV = [
-  { label: "Capabilities", href: "#capabilities" },
+  { label: "Services", href: "#services" },
   { label: "Why ASA", href: "#why-asa" },
   { label: "Projects", href: "#projects" },
   { label: "Leadership", href: "#leadership" },
   { label: "Contact", href: "#contact" },
 ];
+
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);

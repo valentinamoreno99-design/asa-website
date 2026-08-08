@@ -15,7 +15,7 @@ export function Experience() {
         <Reveal className="grid gap-10 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
             <p className="type-label mb-10 text-light-blue/70">
-              <span className="mr-4 text-light-blue">04</span>Experience
+              <span className="mr-4 text-light-blue">03</span>Experience
             </p>
             <h2 className="type-h2 max-w-[16ch]">Experience built in real aviation operations.</h2>
           </div>
