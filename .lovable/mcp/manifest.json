@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://roywundruicojkeokrbw.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "sapient-style-guide",
+      "version": "0.1.0",
+      "title": "Sapient Style Guide"
+    },
+    "tools": [
+      {
+        "name": "list_services",
+        "title": "List ASA services",
+        "description": "List ASA's five service lines with their statements, descriptions and key capabilities, plus the differentiators and operational challenges shown on the site.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_projects",
+        "title": "List ASA projects and leadership",
+        "description": "List ASA's confidentiality-safe reference projects (sector, scope, outcome) together with the partner profiles behind them.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_leads",
+        "title": "List contact leads",
+        "description": "List enquiries submitted through the ASA website contact form, newest first. Optionally filter by status (new, contacted, archived).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "status": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "new",
+                    "contacted",
+                    "archived"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Only return leads with this status. Null returns every status."
+            },
+            "limit": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Maximum number of leads to return. Defaults to 20."
+            }
+          },
+          "required": [
+            "status",
+            "limit"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_lead_status",
+        "title": "Update lead status",
+        "description": "Set the follow-up status of a contact lead to new, contacted or archived.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "description": "The lead id returned by list_leads."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "new",
+                "contacted",
+                "archived"
+              ],
+              "description": "The new follow-up status."
+            }
+          },
+          "required": [
+            "id",
+            "status"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
