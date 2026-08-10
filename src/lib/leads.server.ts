@@ -77,7 +77,12 @@ async function notifyByEmail(lead: LeadInput): Promise<boolean> {
 
 
 export async function deliverLead(lead: LeadInput): Promise<DeliveryResult> {
-  const [stored, notified] = await Promise.all([appendToSheet(lead), notifyByEmail(lead)]);
+  const [saved, appended, notified] = await Promise.all([
+    saveToDatabase(lead),
+    appendToSheet(lead),
+    notifyByEmail(lead),
+  ]);
+  const stored = saved || appended;
   if (!stored && !notified) {
     console.error("Lead received but no delivery channel is configured:", lead.email);
   }
