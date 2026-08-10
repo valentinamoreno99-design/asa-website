@@ -1,9 +1,34 @@
+import { createClient } from "@supabase/supabase-js";
 import type { LeadInput } from "./leads.functions";
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const NOTIFY_EMAIL = "valentina@asaviationgroup.com";
 
 type DeliveryResult = { ok: boolean; stored: boolean; notified: boolean };
+
+async function saveToDatabase(lead: LeadInput): Promise<boolean> {
+  const url = process.env["SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return false;
+
+  const supabase = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { error } = await supabase.from("leads").insert({
+    name: lead.name,
+    company: lead.company,
+    role: lead.role,
+    email: lead.email,
+    focus: lead.focus,
+    message: lead.message,
+  });
+  if (error) {
+    console.error(`Lead insert failed: ${error.message}`);
+    return false;
+  }
+  return true;
+}
+
 
 async function appendToSheet(lead: LeadInput): Promise<boolean> {
   const lovableKey = process.env["LOVABLE_API_KEY"];
@@ -52,7 +77,12 @@ async function notifyByEmail(lead: LeadInput): Promise<boolean> {
 
 
 export async function deliverLead(lead: LeadInput): Promise<DeliveryResult> {
-  const [stored, notified] = await Promise.all([appendToSheet(lead), notifyByEmail(lead)]);
+  const [saved, appended, notified] = await Promise.all([
+    saveToDatabase(lead),
+    appendToSheet(lead),
+    notifyByEmail(lead),
+  ]);
+  const stored = saved || appended;
   if (!stored && !notified) {
     console.error("Lead received but no delivery channel is configured:", lead.email);
   }
