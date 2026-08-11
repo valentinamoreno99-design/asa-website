@@ -35,28 +35,22 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const PROJECTS = [
-  {
-    num: "01",
-    sector: "Narrow-body operator · Europe",
-    title: "Recurrent-defect control in line maintenance",
-    scope: "MCC support, recurrent-defect analysis, troubleshooting criteria, technical-control mentoring.",
-    outcome: "Clearer escalation criteria and traceable technical decisions across line stations.",
-    image: mcc,
-    w: 1600,
-    h: 1104,
-  },
-  {
-    num: "02",
-    sector: "Lessor-supported transition · Americas",
-    title: "Redelivery technical control and evidence management",
-    scope: "Records review, inspection support, MRO supervision, transition control.",
-    outcome: "A controlled transition schedule with consolidated technical evidence at handover.",
-    image: engineDetail,
-    w: 1200,
-    h: 1504,
-  },
-];
+const FEATURED_PROJECT = {
+  num: "01",
+  sector: "Regional A320 operator · Americas",
+  title: "Operational Transformation & Technical Upskilling — Regional A320 Operator",
+  description:
+    "On-site shadowing, AOG support and structural troubleshooting criteria implemented directly in line and base maintenance to reduce hangar downtime and eliminate unnecessary OEM escalations.",
+  results: [
+    { value: "+38%", label: "Structural diagnostics" },
+    { value: "+29%", label: "Troubleshooting competency" },
+    { value: "+54%", label: "Supervision quality standard" },
+  ],
+  image: mcc,
+  w: 1600,
+  h: 1104,
+};
+
 
 const LEADERS = [
   {
