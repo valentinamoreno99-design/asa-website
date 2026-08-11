@@ -25,11 +25,11 @@ const CHALLENGES = [
 
 export function Challenges() {
   return (
-    <section id="challenges" className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-        <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+    <section id="challenges" className="bg-background py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+        <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-10 text-muted-foreground">
+            <p className="type-label mb-8 text-muted-foreground">
               <span className="mr-4 text-asa-blue">04</span>Why clients call ASA
             </p>
             <h2 className="type-h2 max-w-[18ch]">When technical challenges start affecting the operation.</h2>
@@ -41,7 +41,8 @@ export function Challenges() {
           </p>
         </Reveal>
 
-        <dl className="mt-16 border-t border-rule">
+        <dl className="mt-12 border-t border-rule">
+
           {CHALLENGES.map((item, i) => (
             <Reveal
               key={item.title}
