@@ -10,7 +10,6 @@ type Service = {
   num: string;
   statement: string;
   name: string;
-  body: string;
   capabilities: string[];
   image: string;
 };
@@ -18,13 +17,11 @@ type Service = {
 const SERVICES: Service[] = [
   {
     num: "01",
-    statement: "Supporting your airworthiness capability",
+    statement: "Strengthen airworthiness capacity when internal teams are stretched.",
     name: "Airworthiness & CAMO Management",
-    body: "Senior reinforcement for planning, engineering and continuing-airworthiness activities, working inside your processes, approvals and regulatory responsibilities.",
     capabilities: [
       "Maintenance planning and work packages",
       "Engineering and maintenance-program support",
-      "AD / SB control",
       "Reliability",
       "Technical records",
       "Embedded team capacity",
@@ -33,9 +30,8 @@ const SERVICES: Service[] = [
   },
   {
     num: "02",
-    statement: "Supporting faster decisions on the line",
+    statement: "Make faster, better-supported technical decisions on the line.",
     name: "Technical Control & Line Efficiency",
-    body: "Stronger technical control and line decision-making across troubleshooting, deferred defects, recovery coordination and the traceability of technical decisions.",
     capabilities: [
       "MCC / MOC support",
       "Defect and recurrent-defect analysis",
@@ -48,9 +44,8 @@ const SERVICES: Service[] = [
   },
   {
     num: "03",
-    statement: "Protecting compliance and asset value",
+    statement: "Protect compliance and asset value through audits, MRO events and transitions.",
     name: "Audit, Compliance & Asset Protection",
-    body: "Technical control, evidence management and senior oversight for audits, records, MRO events, aircraft transitions and asset-protection projects.",
     capabilities: [
       "Audit preparation and finding closure",
       "Corrective actions",
@@ -63,9 +58,8 @@ const SERVICES: Service[] = [
   },
   {
     num: "04",
-    statement: "Building stronger technical judgement",
+    statement: "Build stronger technical judgement inside your own teams.",
     name: "Technical Development & Leadership",
-    body: "Technical and leadership capability built through specialized courses, mentoring, shadowing and applied practice designed around your operation.",
     capabilities: [
       "Specialized and ATA-focused courses",
       "Advanced troubleshooting",
@@ -78,9 +72,8 @@ const SERVICES: Service[] = [
   },
   {
     num: "05",
-    statement: "Shaping how your operation performs",
+    statement: "Reshape how the operation performs, without stopping it.",
     name: "Operational Strategy & Transformation",
-    body: "Assessment of the current operation, practical strategy definition and implementation support while the organization continues operating.",
     capabilities: [
       "Operational and organization assessment",
       "Operating-model analysis",
@@ -97,30 +90,33 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
   return (
     <li className="group border-t border-rule" onMouseEnter={onActive} onFocus={onActive}>
       <Reveal>
+        <div className="grid gap-6 py-9 md:py-11 lg:grid-cols-[3rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
+          <span className="type-label pt-2 text-asa-blue">{service.num}</span>
 
-      <div className="grid gap-6 py-10 md:py-14 lg:grid-cols-[4rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
-        <span className="type-label pt-2 text-asa-blue">{service.num}</span>
+          <div className="min-w-0">
+            <p className="type-label mb-4 text-muted-foreground">What we solve</p>
+            <p className="max-w-[24ch] font-display text-[clamp(1.3rem,1.9vw,1.75rem)] leading-[1.18] tracking-[-0.02em] text-asa-blue">
+              {service.statement}
+            </p>
+            <h3 className="mt-6 max-w-[26ch] text-[1.05rem] leading-snug font-medium">{service.name}</h3>
+          </div>
 
-        <div>
-          <p className="type-label mb-5 text-muted-foreground">{service.statement}</p>
-          <h3 className="font-display text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.08] tracking-[-0.026em] max-w-[20ch]">
-            {service.name}
-          </h3>
-          <p className="mt-6 max-w-[52ch] text-[0.95rem] leading-relaxed text-muted-foreground">{service.body}</p>
+          <div className="min-w-0 lg:pt-9">
+            <p className="type-label mb-4 text-muted-foreground">What we do</p>
+            <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+              {service.capabilities.map((c) => (
+                <li
+                  key={c}
+                  className="relative pl-4 text-[0.9rem] leading-relaxed text-muted-foreground before:absolute before:top-[0.7em] before:left-0 before:h-1 before:w-1 before:rounded-full before:bg-asa-blue"
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <ul className="grid gap-x-8 gap-y-2 self-start sm:grid-cols-2 lg:pt-9">
-          {service.capabilities.map((c) => (
-            <li key={c} className="type-meta flex gap-3 text-muted-foreground">
-              <span className="mt-2 h-px w-3 shrink-0 bg-asa-blue" />
-              <span>{c}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
       </Reveal>
     </li>
-
   );
 }
 
@@ -128,11 +124,11 @@ export function Services() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="services" className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-[1560px] px-6 md:px-12">
-        <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+    <section id="services" className="bg-background py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+        <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-10 text-muted-foreground">
+            <p className="type-label mb-8 text-muted-foreground">
               <span className="mr-4 text-asa-blue">01</span>Services
             </p>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
@@ -143,8 +139,8 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,8fr)_minmax(0,3fr)] lg:gap-16">
-          <ul className="border-b border-rule">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,8fr)_minmax(0,3fr)] lg:gap-14">
+          <ul className="min-w-0 border-b border-rule">
             {SERVICES.map((service, i) => (
               <ServiceRow key={service.num} service={service} onActive={() => setActive(i)} />
             ))}
@@ -152,7 +148,7 @@ export function Services() {
 
           <div className="hidden lg:block">
             <div className="sticky top-28">
-              <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[10px] bg-muted">
                 {SERVICES.map((service, i) => (
                   <img
                     key={service.num}
@@ -166,7 +162,7 @@ export function Services() {
                   />
                 ))}
               </div>
-              <p className="type-meta mt-5 text-muted-foreground">{SERVICES[active]?.name}</p>
+              <p className="type-meta mt-4 text-muted-foreground">{SERVICES[active]?.name}</p>
             </div>
           </div>
         </div>

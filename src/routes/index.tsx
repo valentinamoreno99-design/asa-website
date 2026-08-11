@@ -11,7 +11,6 @@ import heroAsa from "@/assets/hero-asa.jpg.asset.json";
 import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
 import nicolasPhoto from "@/assets/nicolas-takahashi.png.asset.json";
 import mcc from "@/assets/mcc.jpg";
-import engineDetail from "@/assets/engine-detail.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,28 +34,22 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const PROJECTS = [
-  {
-    num: "01",
-    sector: "Narrow-body operator · Europe",
-    title: "Recurrent-defect control in line maintenance",
-    scope: "MCC support, recurrent-defect analysis, troubleshooting criteria, technical-control mentoring.",
-    outcome: "Clearer escalation criteria and traceable technical decisions across line stations.",
-    image: mcc,
-    w: 1600,
-    h: 1104,
-  },
-  {
-    num: "02",
-    sector: "Lessor-supported transition · Americas",
-    title: "Redelivery technical control and evidence management",
-    scope: "Records review, inspection support, MRO supervision, transition control.",
-    outcome: "A controlled transition schedule with consolidated technical evidence at handover.",
-    image: engineDetail,
-    w: 1200,
-    h: 1504,
-  },
-];
+const FEATURED_PROJECT = {
+  num: "01",
+  sector: "Regional A320 operator · Americas",
+  title: "Operational Transformation & Technical Upskilling — Regional A320 Operator",
+  description:
+    "On-site shadowing, AOG support and structural troubleshooting criteria implemented directly in line and base maintenance to reduce hangar downtime and eliminate unnecessary OEM escalations.",
+  results: [
+    { value: "+38%", label: "Structural diagnostics" },
+    { value: "+29%", label: "Troubleshooting competency" },
+    { value: "+54%", label: "Supervision quality standard" },
+  ],
+  image: mcc,
+  w: 1600,
+  h: 1104,
+};
+
 
 const LEADERS = [
   {
@@ -92,7 +85,7 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="relative min-h-[92vh] overflow-hidden bg-navy-deep text-primary-foreground">
+        <section className="relative min-h-[88svh] overflow-hidden bg-navy-deep text-primary-foreground">
           <img
             src={heroAsa.url}
             alt="Two ASA aviation engineers reviewing technical data on a tablet beside an aircraft engine in a hangar"
@@ -102,7 +95,7 @@ function Index() {
           />
 
           <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--navy-deep)_18%,transparent_92%)]" />
-          <div className="relative mx-auto flex min-h-[92vh] max-w-[1560px] flex-col justify-end px-6 pt-40 pb-16 md:px-12 md:pb-24">
+          <div className="relative mx-auto flex min-h-[88svh] max-w-[1440px] flex-col justify-end px-6 pt-40 pb-16 md:px-10 md:pb-24">
             <p className="type-label mb-12 text-light-blue">Aviation technical & operational partner</p>
             <h1 className="type-display max-w-[17ch]">
               Technical expertise for the challenges that keep your operation moving.
@@ -137,56 +130,63 @@ function Index() {
         <Challenges />
 
         {/* Projects */}
-        <section id="projects" className="bg-warm-white py-24 md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <section id="projects" className="bg-warm-white py-20 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="border-t border-rule pt-8">
-              <p className="type-label mb-10 text-muted-foreground">
-                <span className="mr-4 text-asa-blue">05</span>Selected projects
+              <p className="type-label mb-8 text-muted-foreground">
+                <span className="mr-4 text-asa-blue">05</span>Selected project
               </p>
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
 
-            <div className="mt-20 grid gap-x-16 gap-y-24 lg:grid-cols-2">
-              {PROJECTS.map((project, i) => (
-                <Reveal key={project.num} delay={i * 90} className={i === 1 ? "lg:mt-32" : ""}>
-                  <div className="overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      width={project.w}
-                      height={project.h}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
-                    />
-                  </div>
-                  <p className="type-label mt-8 text-muted-foreground">
-                    <span className="mr-4 text-asa-blue">{project.num}</span>
-                    {project.sector}
-                  </p>
-                  <h3 className="type-h3 mt-6 max-w-[22ch]">{project.title}</h3>
-                  <dl className="mt-8">
-                    <div className="border-t border-rule py-4">
-                      <dt className="type-label text-muted-foreground">ASA scope</dt>
-                      <dd className="type-meta mt-2 max-w-[54ch]">{project.scope}</dd>
+            <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16">
+              <Reveal className="min-w-0">
+                <p className="type-label text-muted-foreground">
+                  <span className="mr-4 text-asa-blue">{FEATURED_PROJECT.num}</span>
+                  {FEATURED_PROJECT.sector}
+                </p>
+                <h3 className="type-h3 mt-6 max-w-[26ch]">{FEATURED_PROJECT.title}</h3>
+
+                <dl className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-3">
+                  {FEATURED_PROJECT.results.map((r) => (
+                    <div key={r.label} className="min-w-0 bg-background px-5 py-6">
+                      <dt className="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-none tracking-[-0.03em] text-asa-blue">
+                        {r.value}
+                      </dt>
+                      <dd className="type-meta mt-3 text-muted-foreground">{r.label}</dd>
                     </div>
-                    <div className="border-t border-b border-rule py-4">
-                      <dt className="type-label text-muted-foreground">Operational outcome</dt>
-                      <dd className="type-meta mt-2 max-w-[54ch]">{project.outcome}</dd>
-                    </div>
-                  </dl>
-                </Reveal>
-              ))}
+                  ))}
+                </dl>
+
+                <p className="mt-8 max-w-[56ch] text-[0.95rem] leading-relaxed text-muted-foreground">
+                  {FEATURED_PROJECT.description}
+                </p>
+              </Reveal>
+
+              <Reveal delay={90} className="min-w-0 lg:pt-2">
+                <div className="overflow-hidden rounded-[10px]">
+                  <img
+                    src={FEATURED_PROJECT.image}
+                    alt="Line maintenance technicians performing structural troubleshooting on an aircraft"
+                    width={FEATURED_PROJECT.w}
+                    height={FEATURED_PROJECT.h}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[4/5]"
+                  />
+                </div>
+              </Reveal>
             </div>
-            <p className="type-meta mt-16 max-w-[60ch] text-muted-foreground">
+            <p className="type-meta mt-14 max-w-[60ch] text-muted-foreground">
               Project descriptions are confidentiality-safe. Client names, evidence and measured results are shared
               under agreement.
             </p>
           </div>
         </section>
 
+
         {/* Leadership */}
-        <section id="leadership" className="bg-background py-24 md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <section id="leadership" className="bg-background py-20 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
                 <p className="type-label mb-10 text-muted-foreground">
@@ -208,7 +208,7 @@ function Index() {
                       src={leader.photo}
                       alt={`Portrait of ${leader.name}`}
                       loading="lazy"
-                      className="size-28 shrink-0 object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
+                      className="size-28 shrink-0 rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
                     />
                     <div>
                       <h3 className="type-h3">{leader.name}</h3>
@@ -233,7 +233,7 @@ function Index() {
 
         {/* Contact */}
         <section id="contact" className="bg-navy py-24 text-primary-foreground md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
               <div>
                 <p className="type-label mb-10 text-light-blue/70">
@@ -255,7 +255,7 @@ function Index() {
       </main>
 
       <footer className="bg-navy-deep pt-20 pb-12 text-primary-foreground">
-        <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <div className="grid gap-12 border-t border-rule-invert pt-12 md:grid-cols-[minmax(0,1fr)_auto]">
             <img
               src={logoLight.url}
