@@ -11,7 +11,6 @@ import heroAsa from "@/assets/hero-asa.jpg.asset.json";
 import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
 import nicolasPhoto from "@/assets/nicolas-takahashi.png.asset.json";
 import mcc from "@/assets/mcc.jpg";
-import engineDetail from "@/assets/engine-detail.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -86,7 +85,7 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="relative min-h-[92vh] overflow-hidden bg-navy-deep text-primary-foreground">
+        <section className="relative min-h-[88svh] overflow-hidden bg-navy-deep text-primary-foreground">
           <img
             src={heroAsa.url}
             alt="Two ASA aviation engineers reviewing technical data on a tablet beside an aircraft engine in a hangar"
@@ -96,7 +95,7 @@ function Index() {
           />
 
           <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--navy-deep)_18%,transparent_92%)]" />
-          <div className="relative mx-auto flex min-h-[92vh] max-w-[1560px] flex-col justify-end px-6 pt-40 pb-16 md:px-12 md:pb-24">
+          <div className="relative mx-auto flex min-h-[88svh] max-w-[1440px] flex-col justify-end px-6 pt-40 pb-16 md:px-10 md:pb-24">
             <p className="type-label mb-12 text-light-blue">Aviation technical & operational partner</p>
             <h1 className="type-display max-w-[17ch]">
               Technical expertise for the challenges that keep your operation moving.
@@ -186,8 +185,8 @@ function Index() {
 
 
         {/* Leadership */}
-        <section id="leadership" className="bg-background py-24 md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <section id="leadership" className="bg-background py-20 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
                 <p className="type-label mb-10 text-muted-foreground">
@@ -209,7 +208,7 @@ function Index() {
                       src={leader.photo}
                       alt={`Portrait of ${leader.name}`}
                       loading="lazy"
-                      className="size-28 shrink-0 object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
+                      className="size-28 shrink-0 rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
                     />
                     <div>
                       <h3 className="type-h3">{leader.name}</h3>
@@ -234,7 +233,7 @@ function Index() {
 
         {/* Contact */}
         <section id="contact" className="bg-navy py-24 text-primary-foreground md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
               <div>
                 <p className="type-label mb-10 text-light-blue/70">
@@ -256,7 +255,7 @@ function Index() {
       </main>
 
       <footer className="bg-navy-deep pt-20 pb-12 text-primary-foreground">
-        <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <div className="grid gap-12 border-t border-rule-invert pt-12 md:grid-cols-[minmax(0,1fr)_auto]">
             <img
               src={logoLight.url}
