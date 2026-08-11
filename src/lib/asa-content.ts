@@ -125,19 +125,15 @@ export const ASA_CHALLENGES = [
 export const ASA_PROJECTS = [
   {
     number: "01",
-    sector: "Narrow-body operator · Europe",
-    title: "Recurrent-defect control in line maintenance",
-    scope: "MCC support, recurrent-defect analysis, troubleshooting criteria, technical-control mentoring.",
-    outcome: "Clearer escalation criteria and traceable technical decisions across line stations.",
-  },
-  {
-    number: "02",
-    sector: "Lessor-supported transition · Americas",
-    title: "Redelivery technical control and evidence management",
-    scope: "Records review, inspection support, MRO supervision, transition control.",
-    outcome: "A controlled transition schedule with consolidated technical evidence at handover.",
+    sector: "Regional A320 operator · Americas",
+    title: "Operational Transformation & Technical Upskilling — Regional A320 Operator",
+    scope:
+      "On-site shadowing, AOG support and structural troubleshooting criteria implemented directly in line and base maintenance.",
+    outcome:
+      "+38% structural diagnostics, +29% troubleshooting competency, +54% supervision quality standard; reduced hangar downtime and fewer unnecessary OEM escalations.",
   },
 ];
+
 
 export const ASA_LEADERSHIP = [
   {
