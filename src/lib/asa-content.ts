@@ -21,7 +21,6 @@ export const ASA_SERVICES: AsaService[] = [
     capabilities: [
       "Maintenance planning and work packages",
       "Engineering and maintenance-program support",
-      "AD / SB control",
       "Reliability",
       "Technical records",
       "Embedded team capacity",
