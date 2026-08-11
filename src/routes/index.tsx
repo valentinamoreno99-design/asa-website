@@ -131,52 +131,59 @@ function Index() {
         <Challenges />
 
         {/* Projects */}
-        <section id="projects" className="bg-warm-white py-24 md:py-36">
-          <div className="mx-auto max-w-[1560px] px-6 md:px-12">
+        <section id="projects" className="bg-warm-white py-20 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="border-t border-rule pt-8">
-              <p className="type-label mb-10 text-muted-foreground">
-                <span className="mr-4 text-asa-blue">05</span>Selected projects
+              <p className="type-label mb-8 text-muted-foreground">
+                <span className="mr-4 text-asa-blue">05</span>Selected project
               </p>
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
 
-            <div className="mt-20 grid gap-x-16 gap-y-24 lg:grid-cols-2">
-              {PROJECTS.map((project, i) => (
-                <Reveal key={project.num} delay={i * 90} className={i === 1 ? "lg:mt-32" : ""}>
-                  <div className="overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      width={project.w}
-                      height={project.h}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
-                    />
-                  </div>
-                  <p className="type-label mt-8 text-muted-foreground">
-                    <span className="mr-4 text-asa-blue">{project.num}</span>
-                    {project.sector}
-                  </p>
-                  <h3 className="type-h3 mt-6 max-w-[22ch]">{project.title}</h3>
-                  <dl className="mt-8">
-                    <div className="border-t border-rule py-4">
-                      <dt className="type-label text-muted-foreground">ASA scope</dt>
-                      <dd className="type-meta mt-2 max-w-[54ch]">{project.scope}</dd>
+            <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16">
+              <Reveal className="min-w-0">
+                <p className="type-label text-muted-foreground">
+                  <span className="mr-4 text-asa-blue">{FEATURED_PROJECT.num}</span>
+                  {FEATURED_PROJECT.sector}
+                </p>
+                <h3 className="type-h3 mt-6 max-w-[26ch]">{FEATURED_PROJECT.title}</h3>
+
+                <dl className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-3">
+                  {FEATURED_PROJECT.results.map((r) => (
+                    <div key={r.label} className="min-w-0 bg-background px-5 py-6">
+                      <dt className="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-none tracking-[-0.03em] text-asa-blue">
+                        {r.value}
+                      </dt>
+                      <dd className="type-meta mt-3 text-muted-foreground">{r.label}</dd>
                     </div>
-                    <div className="border-t border-b border-rule py-4">
-                      <dt className="type-label text-muted-foreground">Operational outcome</dt>
-                      <dd className="type-meta mt-2 max-w-[54ch]">{project.outcome}</dd>
-                    </div>
-                  </dl>
-                </Reveal>
-              ))}
+                  ))}
+                </dl>
+
+                <p className="mt-8 max-w-[56ch] text-[0.95rem] leading-relaxed text-muted-foreground">
+                  {FEATURED_PROJECT.description}
+                </p>
+              </Reveal>
+
+              <Reveal delay={90} className="min-w-0 lg:pt-2">
+                <div className="overflow-hidden rounded-[10px]">
+                  <img
+                    src={FEATURED_PROJECT.image}
+                    alt="Line maintenance technicians performing structural troubleshooting on an aircraft"
+                    width={FEATURED_PROJECT.w}
+                    height={FEATURED_PROJECT.h}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[4/5]"
+                  />
+                </div>
+              </Reveal>
             </div>
-            <p className="type-meta mt-16 max-w-[60ch] text-muted-foreground">
+            <p className="type-meta mt-14 max-w-[60ch] text-muted-foreground">
               Project descriptions are confidentiality-safe. Client names, evidence and measured results are shared
               under agreement.
             </p>
           </div>
         </section>
+
 
         {/* Leadership */}
         <section id="leadership" className="bg-background py-24 md:py-36">
