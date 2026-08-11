@@ -31,7 +31,7 @@ export function ClientLogos() {
               src={logo.src}
               alt={`${logo.name} logo`}
               loading="lazy"
-              className="h-7 w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:h-8"
+              className="h-7 w-auto max-w-full object-contain opacity-55 brightness-0 invert transition-opacity duration-500 hover:opacity-90 md:h-8"
             />
           </li>
         ))}
