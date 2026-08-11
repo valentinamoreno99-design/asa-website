@@ -22,36 +22,29 @@ const CLIENT_TYPES = [
 ];
 
 export function ClientLogos() {
-  const track = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
-
   return (
     <div>
-      <div className="group relative overflow-hidden border-y border-rule py-10">
-        <div className="marquee-track flex w-max items-center gap-20 group-hover:[animation-play-state:paused]">
-          {track.map((logo, i) => (
+      <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 border-y border-rule-invert py-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12">
+        {LOGOS.map((logo) => (
+          <li key={logo.name} className="flex min-w-0 items-center justify-center">
             <img
-              key={`${logo.name}-${i}`}
               src={logo.src}
               alt={`${logo.name} logo`}
               loading="lazy"
-              className="h-9 w-auto max-w-[10rem] shrink-0 object-contain grayscale opacity-45 transition-all duration-500 hover:scale-110 hover:opacity-100 hover:grayscale-0"
+              className="h-7 w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:h-8"
             />
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-[linear-gradient(90deg,var(--color-warm-white),transparent)]" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-[linear-gradient(270deg,var(--color-warm-white),transparent)]" />
-      </div>
+          </li>
+        ))}
+      </ul>
 
-      <div className="mt-12 flex flex-wrap gap-3">
+      <div className="mt-10 flex flex-wrap gap-2.5">
         {CLIENT_TYPES.map((type) => (
           <span
             key={type}
-            className="type-label group/pill relative overflow-hidden rounded-full border border-rule px-5 py-3 text-muted-foreground transition-colors duration-500 hover:border-asa-blue hover:text-primary-foreground"
+            className="type-label rounded-full border border-rule-invert px-4 py-2.5 text-primary-foreground/60"
           >
-            <span className="absolute inset-0 -translate-x-full bg-asa-blue transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/pill:translate-x-0" />
-            <span className="relative">{type}</span>
+            {type}
           </span>
-
         ))}
       </div>
     </div>
