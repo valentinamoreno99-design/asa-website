@@ -72,12 +72,15 @@ export function FlickeringGridText({
 
       // Build a text mask offscreen at grid resolution.
       // Wrap onto two lines on narrow viewports so the slogan stays readable.
-      if (width < 720) {
-        const words = text.split(" ");
-        const mid = Math.ceil(words.length / 2);
-        lines = [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
-      } else {
+      const words = text.split(" ");
+      const lineCount = width < 480 ? 3 : width < 820 ? 2 : 1;
+      if (lineCount === 1) {
         lines = [text];
+      } else {
+        const per = Math.ceil(words.length / lineCount);
+        lines = Array.from({ length: lineCount }, (_, i) => words.slice(i * per, (i + 1) * per).join(" ")).filter(
+          Boolean,
+        );
       }
 
       const off = document.createElement("canvas");

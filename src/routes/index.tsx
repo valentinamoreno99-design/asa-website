@@ -242,7 +242,7 @@ function Index() {
 
           <FlickeringGridText
             text="Expertise that drives operational excellence"
-            className="mt-16 h-[clamp(6rem,10vw,8rem)]"
+            className="mt-16 h-[clamp(7.5rem,10vw,8rem)]"
           />
 
           <div className="mt-20 flex flex-wrap justify-between gap-6 border-t border-rule-invert pt-8">
