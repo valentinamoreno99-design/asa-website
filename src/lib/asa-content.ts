@@ -110,17 +110,6 @@ export const ASA_DIFFERENTIATORS = [
   },
 ];
 
-export const ASA_CHALLENGES = [
-  { title: "Airworthiness capacity", description: "Additional technical support when internal resources are stretched." },
-  { title: "Technical decision-making", description: "Stronger analysis and faster decisions around aircraft availability." },
-  { title: "Compliance & audits", description: "Better preparation, evidence and closure of technical findings." },
-  {
-    title: "MRO / delivery / transitions",
-    description: "Technical oversight when asset condition and contractual risk matter.",
-  },
-  { title: "Team capability", description: "Developing people, judgement and supervision inside the organization." },
-];
-
 export const ASA_PROJECTS = [
   {
     number: "01",

@@ -19,7 +19,7 @@
       {
         "name": "list_services",
         "title": "List ASA services",
-        "description": "List ASA's five service lines with their statements, descriptions and key capabilities, plus the differentiators and operational challenges shown on the site.",
+        "description": "List ASA's five service lines with their statements, descriptions and key capabilities, plus the differentiators shown on the site.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,

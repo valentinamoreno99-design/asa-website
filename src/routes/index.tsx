@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/asa/SiteHeader";
+import { Hero } from "@/components/asa/Hero";
 import { Services } from "@/components/asa/Services";
 import { WhyAsa } from "@/components/asa/WhyAsa";
 import { Experience } from "@/components/asa/Experience";
-import { Challenges } from "@/components/asa/Challenges";
+import { FlickeringGridText } from "@/components/ui/flickering-grid";
 import { ContactForm } from "@/components/asa/ContactForm";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
-import heroAsa from "@/assets/hero-asa.jpg.asset.json";
 import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
 import nicolasPhoto from "@/assets/nicolas-takahashi.png.asset.json";
 import mcc from "@/assets/mcc.jpg";
@@ -84,57 +84,19 @@ function Index() {
       <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[88svh] overflow-hidden bg-navy-deep text-primary-foreground">
-          <img
-            src={heroAsa.url}
-            alt="Two ASA aviation engineers reviewing technical data on a tablet beside an aircraft engine in a hangar"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+        <Hero />
 
-          <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--navy-deep)_18%,transparent_92%)]" />
-          <div className="relative mx-auto flex min-h-[88svh] max-w-[1440px] flex-col justify-end px-6 pt-40 pb-16 md:px-10 md:pb-24">
-            <p className="type-label mb-12 text-light-blue">Aviation technical & operational partner</p>
-            <h1 className="type-display max-w-[17ch]">
-              Technical expertise for the challenges that keep your operation moving.
-            </h1>
-            <div className="mt-14 grid gap-10 border-t border-rule-invert pt-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
-              <p className="type-lead max-w-[52ch] text-light-blue">
-                ASA supports airlines, MROs and lessors in strengthening technical capability, solving operational
-                problems and executing the work that keeps aircraft available and compliant.
-              </p>
-              <div className="flex flex-wrap items-start gap-4 lg:justify-end">
-                <a
-                  href="#contact"
-                  className="type-label bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy"
-                >
-                  Start a conversation
-                </a>
-                <a
-                  href="#services"
-                  className="type-label border border-rule-invert px-8 py-5 transition-colors hover:border-light-blue"
-                >
-                  Explore our services
-                </a>
-              </div>
-            </div>
-            <p className="type-meta mt-12 text-light-blue/70">Strengthen · Solve · Execute</p>
-          </div>
-        </section>
 
         <Services />
         <WhyAsa />
         <Experience />
-        <Challenges />
 
         {/* Projects */}
         <section id="projects" className="bg-warm-white py-20 md:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="border-t border-rule pt-8">
               <p className="type-label mb-8 text-muted-foreground">
-                <span className="mr-4 text-asa-blue">05</span>Selected project
+                <span className="mr-4 text-asa-blue">04</span>Selected project
               </p>
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
@@ -190,7 +152,7 @@ function Index() {
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
                 <p className="type-label mb-10 text-muted-foreground">
-                  <span className="mr-4 text-asa-blue">06</span>Leadership
+                  <span className="mr-4 text-asa-blue">05</span>Leadership
                 </p>
                 <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
               </div>
@@ -237,7 +199,7 @@ function Index() {
             <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
               <div>
                 <p className="type-label mb-10 text-light-blue/70">
-                  <span className="mr-4 text-light-blue">07</span>Contact
+                  <span className="mr-4 text-light-blue">06</span>Contact
                 </p>
                 <h2 className="type-h2 max-w-[14ch]">Let's discuss your operational challenge.</h2>
                 <p className="type-lead mt-10 max-w-[42ch] text-light-blue/80">
@@ -277,6 +239,12 @@ function Index() {
               ))}
             </nav>
           </div>
+
+          <FlickeringGridText
+            text="Expertise that drives operational excellence"
+            className="mt-16 h-[clamp(7.5rem,10vw,8rem)]"
+          />
+
           <div className="mt-20 flex flex-wrap justify-between gap-6 border-t border-rule-invert pt-8">
             <p className="type-meta text-primary-foreground/50">
               © {new Date().getFullYear()} ASA — Advanced Solutions Aviation
