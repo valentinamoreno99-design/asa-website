@@ -87,8 +87,10 @@ export function FlickeringGridText({
       mask = new Uint8Array(cols * rows);
       if (octx) {
         const longest = lines.reduce((a, b) => (b.length > a.length ? b : a), "");
-        const fontSize =
-          Math.min((rows / lines.length) * 0.62, (width / Math.max(longest.length, 1)) * 1.5) / (squareSize + gridGap);
+        const fontSize = Math.min(
+          (rows / lines.length) * 0.8,
+          (cols / Math.max(longest.length, 1)) * 1.9,
+        );
         octx.fillStyle = "#fff";
         octx.textAlign = "center";
         octx.textBaseline = "middle";
