@@ -49,6 +49,7 @@ export function FlickeringGridText({
     let cols = 0;
     let rows = 0;
     let mask: Uint8Array = new Uint8Array(0);
+    let baseFont = 0;
     let squares: Float32Array = new Float32Array(0);
     let raf = 0;
     let running = false;
@@ -79,6 +80,7 @@ export function FlickeringGridText({
         octx.fillStyle = "#fff";
         octx.textAlign = "center";
         octx.textBaseline = "middle";
+        baseFont = fontSize;
         octx.font = `500 ${fontSize}px Archivo, system-ui, sans-serif`;
         octx.fillText(text, off.width / 2, off.height / 2, off.width * 0.96);
         const data = octx.getImageData(0, 0, off.width, off.height).data;
@@ -93,6 +95,15 @@ export function FlickeringGridText({
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Legibility layer: the slogan itself, quietly present under the grid.
+      ctx.save();
+      ctx.globalAlpha = 0.3;
+      ctx.fillStyle = color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = `500 ${baseFont * (squareSize + gridGap) * dpr}px Archivo, system-ui, sans-serif`;
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2, canvas.width * 0.96);
+      ctx.restore();
       const step = (squareSize + gridGap) * dpr;
       for (let x = 0; x < cols; x++) {
         for (let y = 0; y < rows; y++) {
