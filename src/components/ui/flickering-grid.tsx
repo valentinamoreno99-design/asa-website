@@ -50,6 +50,7 @@ export function FlickeringGridText({
     let rows = 0;
     let mask: Uint8Array = new Uint8Array(0);
     let baseFont = 0;
+    let lines: string[] = [text];
     let squares: Float32Array = new Float32Array(0);
     let raf = 0;
     let running = false;
@@ -70,19 +71,38 @@ export function FlickeringGridText({
       rows = Math.floor(height / step);
 
       // Build a text mask offscreen at grid resolution.
+      // Wrap onto two lines on narrow viewports so the slogan stays readable.
+      if (width < 720) {
+        const words = text.split(" ");
+        const mid = Math.ceil(words.length / 2);
+        lines = [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+      } else {
+        lines = [text];
+      }
+
       const off = document.createElement("canvas");
       off.width = Math.max(cols, 1);
       off.height = Math.max(rows, 1);
       const octx = off.getContext("2d");
       mask = new Uint8Array(cols * rows);
       if (octx) {
-        const fontSize = Math.min(rows * 0.62, (width / Math.max(text.length, 1)) * 1.55) * 1;
+        const longest = lines.reduce((a, b) => (b.length > a.length ? b : a), "");
+        const fontSize =
+          Math.min((rows / lines.length) * 0.62, (width / Math.max(longest.length, 1)) * 1.5) / (squareSize + gridGap);
         octx.fillStyle = "#fff";
         octx.textAlign = "center";
         octx.textBaseline = "middle";
         baseFont = fontSize;
         octx.font = `500 ${fontSize}px Archivo, system-ui, sans-serif`;
-        octx.fillText(text, off.width / 2, off.height / 2, off.width * 0.96);
+        const lh = fontSize * 1.15;
+        lines.forEach((line, li) => {
+          octx.fillText(
+            line,
+            off.width / 2,
+            off.height / 2 + (li - (lines.length - 1) / 2) * lh,
+            off.width * 0.96,
+          );
+        });
         const data = octx.getImageData(0, 0, off.width, off.height).data;
         for (let i = 0; i < cols * rows; i++) {
           mask[i] = data[i * 4 + 3]! > 60 ? 1 : 0;
@@ -102,7 +122,15 @@ export function FlickeringGridText({
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.font = `500 ${baseFont * (squareSize + gridGap) * dpr}px Archivo, system-ui, sans-serif`;
-      ctx.fillText(text, canvas.width / 2, canvas.height / 2, canvas.width * 0.96);
+      const lhPx = baseFont * (squareSize + gridGap) * dpr * 1.15;
+      lines.forEach((line, li) => {
+        ctx.fillText(
+          line,
+          canvas.width / 2,
+          canvas.height / 2 + (li - (lines.length - 1) / 2) * lhPx,
+          canvas.width * 0.96,
+        );
+      });
       ctx.restore();
       const step = (squareSize + gridGap) * dpr;
       for (let x = 0; x < cols; x++) {
