@@ -38,8 +38,8 @@ export function ZoomParallax({ images }: { images: ZoomImage[] }) {
             className="absolute top-0 flex h-full w-full items-center justify-center"
           >
             <div
-              className={`relative overflow-hidden rounded-[10px] ${
-                POSITIONS[i] ? `${POSITIONS[i]}` : "h-[24vh] w-[26vw] md:h-[25vh] md:w-[25vw]"
+              className={`overflow-hidden rounded-[10px] ${
+                POSITIONS[i] ? `relative ${POSITIONS[i]}` : "relative h-[26vh] w-[26vw]"
               }`}
             >
               <img src={image.src} alt={image.alt} loading="lazy" className="h-full w-full object-cover" />
