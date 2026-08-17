@@ -38,22 +38,25 @@ export const Route = createFileRoute("/")({
 
 const LEADERS = [
   {
-    name: "Nicolás Takahashi",
-    role: "Partner — Technical Operations",
-    photo: nicolasPhoto.url,
-    statement:
-      "Responsibility for engineering, maintenance planning and technical control inside operating environments where availability and compliance are measured daily.",
-    expertise: ["Continuing airworthiness", "Maintenance planning", "Technical control", "Operational governance"],
-  },
-  {
     name: "Jhon Luna",
-    role: "Partner — Capability & Execution",
+    role: "Co-Founder & Technical Director",
+    years: "20+ years",
     photo: jhonPhoto.url,
     statement:
-      "Leadership across line and base maintenance, troubleshooting and technical capability development within airline and MRO organizations.",
-    expertise: ["Line and base maintenance", "Advanced troubleshooting", "Training and mentoring", "MCC / MOC"],
+      "Airline engineering, maintenance and technical leadership across AviancaTACA, Viva Air and Alma Air.",
+    linkedin: "https://www.linkedin.com/in/jhon-luna-a0968060/",
+  },
+  {
+    name: "Nicolás Takahashi",
+    role: "Co-Founder & Managing Director",
+    years: "28+ years",
+    photo: nicolasPhoto.url,
+    statement:
+      "Airline engineering, maintenance, contracts and strategic projects across Avianca, Viva Air and Dutch Antilles Express.",
+    linkedin: "https://www.linkedin.com/in/nicolas-takahashi-asa/",
   },
 ];
+
 
 const FOOTER_NAV = [
   { label: "Challenges", href: "#challenges" },
