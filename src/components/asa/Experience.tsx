@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import { ClientLogos } from "@/components/asa/ClientLogos";
+import { Eyebrow } from "@/components/asa/Eyebrow";
 import planningOffice from "@/assets/planning-office.jpg";
 
 const METRICS = [
@@ -14,9 +15,9 @@ export function Experience() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-8 text-light-blue/70">
-              <span className="mr-4 text-light-blue">03</span>Experience
-            </p>
+            <Eyebrow num="03" invert>
+              Experience
+            </Eyebrow>
             <h2 className="type-h2 max-w-[18ch]">Experience built in real aviation operations.</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-light-blue/80">
@@ -27,7 +28,7 @@ export function Experience() {
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <Reveal className="min-w-0">
-            <p className="font-display text-[clamp(3.25rem,6.5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-light-blue">
+            <p className="font-display text-[clamp(3.5rem,7vw,6rem)] leading-[0.9] tracking-[-0.04em] text-light-blue">
               15+
             </p>
             <p className="mt-4 max-w-[24ch] font-display text-[clamp(1.1rem,1.5vw,1.4rem)] leading-snug tracking-[-0.02em]">
@@ -42,9 +43,9 @@ export function Experience() {
               {METRICS.map((metric) => (
                 <div
                   key={metric.value}
-                  className="grid gap-1 border-b border-rule-invert py-5 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-8"
+                  className="group grid gap-1 border-b border-rule-invert py-6 transition-colors duration-500 hover:bg-white/[0.03] sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-8"
                 >
-                  <dt className="font-display text-lg tracking-tight text-light-blue">{metric.value}</dt>
+                  <dt className="font-display text-[1.35rem] leading-none tracking-[-0.02em] text-light-blue">{metric.value}</dt>
                   <dd className="type-meta self-center text-primary-foreground/70">{metric.label}</dd>
                 </div>
               ))}

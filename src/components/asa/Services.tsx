@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { Eyebrow } from "@/components/asa/Eyebrow";
 import mcc from "@/assets/mcc.jpg";
 import engineDetail from "@/assets/engine-detail.jpg";
 import planningOffice from "@/assets/planning-office.jpg";
@@ -88,14 +89,18 @@ const SERVICES: Service[] = [
 
 function ServiceRow({ service, onActive }: { service: Service; onActive: () => void }) {
   return (
-    <li className="group border-t border-rule" onMouseEnter={onActive} onFocus={onActive}>
+    <li
+      className="group relative border-t border-rule transition-colors duration-500 hover:bg-warm-white"
+      onMouseEnter={onActive}
+      onFocus={onActive}
+    >
       <Reveal>
-        <div className="grid gap-6 py-9 md:py-11 lg:grid-cols-[3rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
+        <div className="grid gap-6 py-9 md:py-12 lg:grid-cols-[3rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
           <span className="type-label pt-2 text-asa-blue">{service.num}</span>
 
           <div className="min-w-0">
             <p className="type-label mb-4 text-muted-foreground">What we solve</p>
-            <p className="max-w-[24ch] font-display text-[clamp(1.3rem,1.9vw,1.75rem)] leading-[1.18] tracking-[-0.02em] text-asa-blue">
+            <p className="max-w-[24ch] font-display text-[clamp(1.35rem,2vw,1.9rem)] leading-[1.14] tracking-[-0.025em] text-asa-blue">
               {service.statement}
             </p>
             <h3 className="mt-6 max-w-[26ch] text-[1.05rem] leading-snug font-medium">{service.name}</h3>
@@ -116,6 +121,7 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
           </div>
         </div>
       </Reveal>
+      <span className="pointer-events-none absolute top-[-1px] left-0 h-px w-0 bg-asa-blue transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
     </li>
   );
 }
@@ -128,9 +134,7 @@ export function Services() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-8 text-muted-foreground">
-              <span className="mr-4 text-asa-blue">01</span>Services
-            </p>
+            <Eyebrow num="01">Services</Eyebrow>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">

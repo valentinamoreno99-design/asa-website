@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { Eyebrow } from "@/components/asa/Eyebrow";
 
 const POINTS = [
   {
@@ -29,9 +30,7 @@ export function WhyAsa() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-8 text-muted-foreground">
-              <span className="mr-4 text-asa-blue">02</span>Why ASA
-            </p>
+            <Eyebrow num="02">Why ASA</Eyebrow>
             <h2 className="type-h2 max-w-[17ch]">Senior expertise grounded in real operations.</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
@@ -46,13 +45,14 @@ export function WhyAsa() {
               as="li"
               key={point.num}
               delay={i * 70}
-              className="flex min-w-0 flex-col bg-background p-7 md:p-8"
+              className="group relative flex min-w-0 flex-col bg-background p-7 transition-colors duration-500 hover:bg-warm-white md:p-9"
             >
               <span className="type-label text-asa-blue">{point.num}</span>
-              <h3 className="mt-8 font-display text-[1.35rem] leading-[1.15] tracking-[-0.02em] uppercase">
+              <h3 className="mt-10 font-display text-[1.35rem] leading-[1.12] tracking-[-0.02em] uppercase md:mt-14">
                 {point.title}
               </h3>
               <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground">{point.body}</p>
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px w-0 bg-asa-blue transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
             </Reveal>
           ))}
         </ol>
