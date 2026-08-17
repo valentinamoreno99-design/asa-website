@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import logoDark from "@/assets/asa-logo-dark.png.asset.json";
-import logoLight from "@/assets/asa-logo-light.png.asset.json";
+import logoDark from "@/assets/primary-logo-dark-2.png.asset.json";
+import logoLight from "@/assets/primary-logo-light-2.png.asset.json";
 
 const NAV = [
-  { num: "01", label: "Services", href: "#services" },
-  { num: "02", label: "Why ASA", href: "#why-asa" },
-  { num: "03", label: "Projects", href: "#projects" },
-  { num: "04", label: "Leadership", href: "#leadership" },
-  { num: "05", label: "Contact", href: "#contact" },
+  { num: "01", label: "Challenges", href: "#challenges" },
+  { num: "02", label: "Services", href: "#services" },
+  { num: "03", label: "Why ASA", href: "#why-asa" },
+  { num: "04", label: "Experience", href: "#experience" },
+  { num: "05", label: "Leadership", href: "#leadership" },
+  { num: "06", label: "Contact", href: "#contact" },
 ];
 
 export function SiteHeader() {
