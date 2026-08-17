@@ -123,7 +123,7 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
       </div>
 
       <div className={`min-w-0 ${flip ? "lg:order-1" : ""}`}>
-        <div className="overflow-hidden rounded-[10px]">
+      <div className="overflow-hidden rounded-[8px]">
           <img
             src={service.image}
             alt={service.alt}
@@ -152,7 +152,7 @@ export function Services() {
         </Reveal>
 
         {/* Scan index — all five areas visible at a glance */}
-        <Reveal delay={60} className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-5">
+        <Reveal delay={60} className="mt-10 grid gap-px overflow-hidden rounded-[8px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-5">
           {SERVICES.map((service) => (
             <a
               key={service.num}
