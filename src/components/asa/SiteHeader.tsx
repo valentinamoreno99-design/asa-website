@@ -63,7 +63,7 @@ export function SiteHeader() {
           />
         </a>
 
-        <nav className="hidden justify-center gap-8 lg:flex">
+        <nav className="hidden justify-center gap-6 lg:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -80,7 +80,7 @@ export function SiteHeader() {
 
         <div className="flex shrink-0 items-center gap-4">
           <span className="type-label hidden opacity-55 lg:inline">
-            {activeItem ? `${activeItem.num} / 05` : "00 / 05"}
+            {activeItem ? `${activeItem.num} / 06` : "00 / 06"}
           </span>
           <button
             type="button"
