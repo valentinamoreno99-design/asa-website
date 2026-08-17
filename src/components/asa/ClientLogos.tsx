@@ -52,18 +52,6 @@ export function ClientLogos({ invert = true }: { invert?: boolean }) {
         </ul>
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-2.5">
-        {CLIENT_TYPES.map((type) => (
-          <span
-            key={type}
-            className={`type-label rounded-full border px-4 py-2.5 ${
-              invert ? "border-rule-invert text-primary-foreground/60" : "border-rule text-muted-foreground"
-            }`}
-          >
-            {type}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }

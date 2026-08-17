@@ -146,7 +146,7 @@ function Index() {
                     src={leader.photo}
                     alt={`Portrait of ${leader.name}`}
                     loading="lazy"
-                    className="aspect-[4/5] w-full rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
+                    className="aspect-[4/5] w-full rounded-[8px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
                   />
                   <div className="mt-7 flex items-baseline justify-between gap-6 border-t border-rule pt-6">
                     <p className="type-label text-asa-blue">{leader.role}</p>

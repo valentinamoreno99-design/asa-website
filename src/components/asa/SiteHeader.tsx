@@ -116,7 +116,7 @@ export function SiteHeader() {
                 <span className="font-display text-[1.75rem] leading-none tracking-[-0.03em]">{item.label}</span>
               </a>
             ))}
-            <p className="type-meta mt-auto pb-10 text-muted-foreground">Strengthen · Solve · Execute</p>
+            <p className="type-meta mt-auto pb-10 text-muted-foreground">Advise. Train. Execute.</p>
           </nav>
         </div>
       ) : null}

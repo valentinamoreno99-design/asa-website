@@ -89,7 +89,7 @@ export function WhyAsa() {
           </p>
         </Reveal>
 
-        <ol className="mt-12 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-[8px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
           {POINTS.map((point, i) => (
             <Reveal
               as="li"
