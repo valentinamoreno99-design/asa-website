@@ -138,50 +138,52 @@ function Index() {
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16">
-              <Reveal className="min-w-0">
-                <p className="type-label text-muted-foreground">
-                  <span className="mr-4 text-asa-blue">{FEATURED_PROJECT.num}</span>
+            {/* Full-width cover with overlaid title */}
+            <Reveal className="relative mt-12 overflow-hidden rounded-[10px]">
+              <img
+                src={FEATURED_PROJECT.image}
+                alt="Line maintenance technicians performing structural troubleshooting on an aircraft"
+                width={FEATURED_PROJECT.w}
+                height={FEATURED_PROJECT.h}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] md:aspect-[21/9]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,var(--navy-deep)_8%,transparent_75%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground md:p-12">
+                <p className="type-label text-light-blue">
+                  <span className="mr-4">{FEATURED_PROJECT.num}</span>
                   {FEATURED_PROJECT.sector}
                 </p>
-                <h3 className="type-h3 mt-6 max-w-[26ch]">{FEATURED_PROJECT.title}</h3>
+                <h3 className="type-h3 mt-5 max-w-[30ch]">{FEATURED_PROJECT.title}</h3>
+              </div>
+            </Reveal>
 
-                <dl className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-3">
-                  {FEATURED_PROJECT.results.map((r) => (
-                    <div key={r.label} className="group min-w-0 bg-background px-5 py-7 transition-colors duration-500 hover:bg-warm-white">
-                      <dt className="font-display text-[clamp(2rem,3.4vw,2.9rem)] leading-none tracking-[-0.03em] text-asa-blue">
-                        {r.value}
-                      </dt>
-                      <dd className="type-meta mt-3 text-muted-foreground">{r.label}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <p className="mt-8 max-w-[56ch] text-[0.95rem] leading-relaxed text-muted-foreground">
-                  {FEATURED_PROJECT.description}
-                </p>
-              </Reveal>
-
-              <Reveal delay={90} className="min-w-0 lg:pt-2">
-                <div className="overflow-hidden rounded-[10px]">
-                  <img
-                    src={FEATURED_PROJECT.image}
-                    alt="Line maintenance technicians performing structural troubleshooting on an aircraft"
-                    width={FEATURED_PROJECT.w}
-                    height={FEATURED_PROJECT.h}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover grayscale-[35%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[4/5]"
-                  />
+            {/* Metrics band */}
+            <Reveal delay={80} className="mt-12 grid border-y border-rule md:grid-cols-3">
+              {FEATURED_PROJECT.results.map((r) => (
+                <div
+                  key={r.label}
+                  className="min-w-0 border-b border-rule py-8 transition-colors duration-500 last:border-b-0 hover:bg-background md:border-b-0 md:border-r md:px-10 md:py-12 md:first:pl-0 md:last:border-r-0"
+                >
+                  <p className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-none tracking-[-0.04em] text-asa-blue">
+                    {r.value}
+                  </p>
+                  <p className="type-meta mt-5 text-muted-foreground">{r.label}</p>
                 </div>
-              </Reveal>
-            </div>
-            <p className="type-meta mt-14 max-w-[60ch] text-muted-foreground">
-              Project descriptions are confidentiality-safe. Client names, evidence and measured results are shared
-              under agreement.
-            </p>
+              ))}
+            </Reveal>
+
+            {/* Narrow detail column */}
+            <Reveal delay={120} className="mx-auto mt-14 max-w-[62ch]">
+              <p className="type-label mb-5 text-muted-foreground">ASA scope</p>
+              <p className="text-[1.05rem] leading-relaxed text-foreground/80">{FEATURED_PROJECT.description}</p>
+              <p className="type-meta mt-10 border-t border-rule pt-6 text-muted-foreground">
+                Project descriptions are confidentiality-safe. Client names, evidence and measured results are shared
+                under agreement.
+              </p>
+            </Reveal>
           </div>
         </section>
-
 
         {/* Leadership */}
         <section id="leadership" className="bg-background py-20 md:py-28">
@@ -199,31 +201,37 @@ function Index() {
               </p>
             </Reveal>
 
-            <div className="mt-20 grid gap-x-16 gap-y-16 lg:grid-cols-2">
+            <div className="mt-16">
               {LEADERS.map((leader, i) => (
-                <Reveal key={leader.name} delay={i * 80} className="border-t border-rule pt-10">
-                  <div className="flex items-start gap-8">
+                <Reveal
+                  key={leader.name}
+                  className="grid gap-8 border-t border-rule py-14 md:py-20 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16"
+                >
+                  <div className={`min-w-0 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                     <img
                       src={leader.photo}
                       alt={`Portrait of ${leader.name}`}
                       loading="lazy"
-                      className="size-28 shrink-0 rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:size-36"
+                      className="aspect-[4/5] w-full max-w-[22rem] rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
                     />
-                    <div>
-                      <h3 className="type-h3">{leader.name}</h3>
-                      <p className="type-label mt-4 text-asa-blue">{leader.role}</p>
-                    </div>
                   </div>
-                  <p className="mt-8 max-w-[50ch] text-[0.95rem] leading-relaxed text-muted-foreground">
-                    {leader.statement}
-                  </p>
-                  <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-rule pt-6">
-                    {leader.expertise.map((item) => (
-                      <li key={item} className="type-meta text-muted-foreground">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className={`min-w-0 self-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <p className="type-label text-asa-blue">{leader.role}</p>
+                    <h3 className="mt-5 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-[-0.03em]">
+                      {leader.name}
+                    </h3>
+                    <p className="mt-8 max-w-[56ch] text-[1.05rem] leading-relaxed text-foreground/80">
+                      {leader.statement}
+                    </p>
+                    <ol className="mt-10 grid gap-x-10 gap-y-3 border-t border-rule pt-6 sm:grid-cols-2">
+                      {leader.expertise.map((item, j) => (
+                        <li key={item} className="type-meta flex gap-4 text-muted-foreground">
+                          <span className="text-asa-blue">{String(j + 1).padStart(2, "0")}</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -233,21 +241,21 @@ function Index() {
         {/* Contact */}
         <section id="contact" className="bg-navy py-24 text-primary-foreground md:py-36">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-            <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
-              <div>
-                <Eyebrow num="07" invert className="mb-10">
-                  Contact
-                </Eyebrow>
-                <h2 className="type-h2 max-w-[14ch]">Let's discuss your operational challenge.</h2>
-                <p className="type-lead mt-10 max-w-[42ch] text-light-blue/80">
+            <Reveal className="border-t border-rule-invert pt-8">
+              <Eyebrow num="07" invert className="mb-10">
+                Contact
+              </Eyebrow>
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
+                <h2 className="type-h2 max-w-[16ch]">Let's discuss your operational challenge.</h2>
+                <p className="type-lead max-w-[44ch] self-end text-light-blue/80">
                   Tell us what you need to strengthen, solve or execute. We will come back with a clear view of scope
                   and the right technical profile.
                 </p>
               </div>
+            </Reveal>
 
-              <div className="lg:pt-4">
-                <ContactForm />
-              </div>
+            <Reveal delay={80} className="mt-14">
+              <ContactForm />
             </Reveal>
           </div>
         </section>
@@ -255,35 +263,58 @@ function Index() {
 
       <footer className="bg-navy-deep pt-20 pb-12 text-primary-foreground">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-          <div className="grid gap-12 border-t border-rule-invert pt-12 md:grid-cols-[minmax(0,1fr)_auto]">
-            <img
-              src={logoLight.url}
-              alt="ASA — Advanced Solutions Aviation"
-              width={1920}
-              height={430}
-              loading="lazy"
-              className="h-8 w-auto"
-            />
-            <nav className="flex flex-wrap gap-x-10 gap-y-4">
-              {FOOTER_NAV.map((item) => (
+          <div className="grid gap-12 border-t border-rule-invert pt-12 md:grid-cols-3">
+            <div>
+              <img
+                src={logoLight.url}
+                alt="ASA — Advanced Solutions Aviation"
+                width={1920}
+                height={430}
+                loading="lazy"
+                className="h-8 w-auto"
+              />
+              <p className="type-meta mt-6 max-w-[30ch] text-primary-foreground/60">
+                Aviation technical & operational partner.
+              </p>
+            </div>
+
+            <nav className="flex flex-col gap-4">
+              <p className="type-label mb-2 text-light-blue/70">Navigation</p>
+              {FOOTER_NAV.map((item, i) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="type-label text-primary-foreground/70 transition-colors hover:text-light-blue"
+                  className="type-label flex gap-4 text-primary-foreground/70 transition-colors hover:text-light-blue"
                 >
+                  <span className="text-asa-blue">{String(i + 1).padStart(2, "0")}</span>
                   {item.label}
                 </a>
               ))}
             </nav>
+
+            <div>
+              <p className="type-label mb-6 text-light-blue/70">Contact</p>
+              <a
+                href="mailto:valentina@asaviationgroup.com"
+                className="link-underline type-meta text-primary-foreground/80"
+              >
+                valentina@asaviationgroup.com
+              </a>
+              <p className="type-meta mt-6 text-primary-foreground/60">Strengthen. Solve. Execute.</p>
+            </div>
           </div>
+
           <div className="mt-20 flex flex-wrap justify-between gap-6 border-t border-rule-invert pt-8">
             <p className="type-meta text-primary-foreground/50">
               © {new Date().getFullYear()} ASA — Advanced Solutions Aviation
             </p>
-            <p className="type-meta text-primary-foreground/50">Strengthen. Solve. Execute.</p>
+            <a href="#top" className="type-meta text-primary-foreground/50 transition-colors hover:text-light-blue">
+              Back to top ↑
+            </a>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+
