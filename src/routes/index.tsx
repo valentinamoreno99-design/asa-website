@@ -38,22 +38,25 @@ export const Route = createFileRoute("/")({
 
 const LEADERS = [
   {
-    name: "Nicolás Takahashi",
-    role: "Partner — Technical Operations",
-    photo: nicolasPhoto.url,
-    statement:
-      "Responsibility for engineering, maintenance planning and technical control inside operating environments where availability and compliance are measured daily.",
-    expertise: ["Continuing airworthiness", "Maintenance planning", "Technical control", "Operational governance"],
-  },
-  {
     name: "Jhon Luna",
-    role: "Partner — Capability & Execution",
+    role: "Co-Founder & Technical Director",
+    years: "20+ years",
     photo: jhonPhoto.url,
     statement:
-      "Leadership across line and base maintenance, troubleshooting and technical capability development within airline and MRO organizations.",
-    expertise: ["Line and base maintenance", "Advanced troubleshooting", "Training and mentoring", "MCC / MOC"],
+      "Airline engineering, maintenance and technical leadership across AviancaTACA, Viva Air and Alma Air.",
+    linkedin: "https://www.linkedin.com/in/jhon-luna-a0968060/",
+  },
+  {
+    name: "Nicolás Takahashi",
+    role: "Co-Founder & Managing Director",
+    years: "28+ years",
+    photo: nicolasPhoto.url,
+    statement:
+      "Airline engineering, maintenance, contracts and strategic projects across Avianca, Viva Air and Dutch Antilles Express.",
+    linkedin: "https://www.linkedin.com/in/nicolas-takahashi-asa/",
   },
 ];
+
 
 const FOOTER_NAV = [
   { label: "Challenges", href: "#challenges" },
@@ -128,45 +131,45 @@ function Index() {
                 <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
               </div>
               <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
-                Clients work directly with the specialists responsible for the scope — not through layers of account
-                management.
+                You work with people who have held responsibility inside airline engineering and maintenance
+                organizations — not through layers of account management.
               </p>
             </Reveal>
 
-            <div className="mt-12">
-              {LEADERS.map((leader, i) => (
-                <Reveal
-                  key={leader.name}
-                  className="grid gap-8 border-t border-rule py-12 md:py-16 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-14"
-                >
-                  <div className={`min-w-0 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <img
-                      src={leader.photo}
-                      alt={`Portrait of ${leader.name}`}
-                      loading="lazy"
-                      className="aspect-[4/5] w-full max-w-[19rem] rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
-                    />
-                  </div>
-                  <div className={`min-w-0 self-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+            <div className="mt-12 grid gap-10 border-t border-rule pt-12 md:grid-cols-2 md:gap-12">
+              {LEADERS.map((leader) => (
+                <Reveal key={leader.name} className="min-w-0">
+                  <img
+                    src={leader.photo}
+                    alt={`Portrait of ${leader.name}`}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full rounded-[10px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
+                  />
+                  <div className="mt-7 flex items-baseline justify-between gap-6 border-t border-rule pt-6">
                     <p className="type-label text-asa-blue">{leader.role}</p>
-                    <h3 className="mt-4 font-display text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.05] tracking-[-0.03em]">
-                      {leader.name}
-                    </h3>
-                    <p className="mt-6 max-w-[56ch] text-[1rem] leading-relaxed text-foreground/80">
-                      {leader.statement}
-                    </p>
-                    <ol className="mt-8 grid gap-x-10 gap-y-3 border-t border-rule pt-6 sm:grid-cols-2">
-                      {leader.expertise.map((item, j) => (
-                        <li key={item} className="type-meta flex gap-4 text-muted-foreground">
-                          <span className="text-asa-blue">{String(j + 1).padStart(2, "0")}</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ol>
+                    <p className="type-meta text-muted-foreground">{leader.years}</p>
                   </div>
+                  <h3 className="mt-4 flex items-center gap-3 font-display text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.05] tracking-[-0.03em]">
+                    {leader.name}
+                    <a
+                      href={leader.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${leader.name} on LinkedIn`}
+                      className="text-muted-foreground/50 transition-colors hover:text-asa-blue"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-[1rem] w-[1rem]" aria-hidden="true">
+                        <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.24 8.25h4.5V24H.24V8.25ZM8.34 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-7.95c0-1.9-.03-4.35-2.65-4.35-2.65 0-3.06 2.07-3.06 4.21V24h-4.5V8.25Z" />
+                      </svg>
+                    </a>
+                  </h3>
+                  <p className="mt-5 max-w-[46ch] text-[1rem] leading-relaxed text-foreground/80">
+                    {leader.statement}
+                  </p>
                 </Reveal>
               ))}
             </div>
+
           </div>
         </section>
 
