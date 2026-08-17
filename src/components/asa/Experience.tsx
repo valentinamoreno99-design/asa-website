@@ -102,7 +102,7 @@ export function Experience() {
                   src={camo.url}
                   alt="Aircraft in a hangar at sunset during scheduled maintenance"
                   loading="lazy"
-                  className="h-56 w-full object-cover sm:h-72 lg:h-full lg:min-h-[520px]"
+                  className="h-56 w-full object-cover sm:h-72 lg:h-full lg:min-h-[420px]"
                 />
                 <span className="type-label absolute top-5 left-5 rounded-lg bg-asa-blue px-4 py-2 text-primary-foreground">
                   Case study
