@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/asa/Eyebrow";
 import mcc from "@/assets/mcc.jpg";
@@ -87,28 +86,23 @@ const SERVICES: Service[] = [
   },
 ];
 
-function ServiceRow({ service, onActive }: { service: Service; onActive: () => void }) {
+function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
   return (
-    <li
-      className="group relative border-t border-rule transition-colors duration-500 hover:bg-warm-white"
-      onMouseEnter={onActive}
-      onFocus={onActive}
+    <Reveal
+      as="article"
+      className="grid gap-8 border-t border-rule py-14 md:py-20 lg:grid-cols-2 lg:items-center lg:gap-16"
     >
-      <Reveal>
-        <div className="grid gap-6 py-9 md:py-12 lg:grid-cols-[3rem_minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
-          <span className="type-label pt-2 text-asa-blue">{service.num}</span>
-
+      <div className={`min-w-0 ${flip ? "lg:order-2" : ""}`}>
+        <div className="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-5 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-x-8">
+          <span className="font-display text-[clamp(2rem,3.4vw,3.25rem)] leading-none tracking-[-0.04em] text-asa-blue/30">
+            {service.num}
+          </span>
           <div className="min-w-0">
-            <p className="type-label mb-4 text-muted-foreground">What we solve</p>
-            <p className="max-w-[24ch] font-display text-[clamp(1.35rem,2vw,1.9rem)] leading-[1.14] tracking-[-0.025em] text-asa-blue">
+            <h3 className="max-w-[22ch] font-display text-[clamp(1.5rem,2.4vw,2.2rem)] leading-[1.08] tracking-[-0.03em]">
               {service.statement}
-            </p>
-            <h3 className="mt-6 max-w-[26ch] text-[1.05rem] leading-snug font-medium">{service.name}</h3>
-          </div>
-
-          <div className="min-w-0 lg:pt-9">
-            <p className="type-label mb-4 text-muted-foreground">What we do</p>
-            <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            </h3>
+            <p className="type-label mt-6 text-asa-blue">{service.name}</p>
+            <ul className="mt-8 grid gap-x-10 gap-y-2.5 border-t border-rule pt-6 sm:grid-cols-2">
               {service.capabilities.map((c) => (
                 <li
                   key={c}
@@ -120,15 +114,24 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
             </ul>
           </div>
         </div>
-      </Reveal>
-      <span className="pointer-events-none absolute top-[-1px] left-0 h-px w-0 bg-asa-blue transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
-    </li>
+      </div>
+
+      <div className={`min-w-0 ${flip ? "lg:order-1" : ""}`}>
+        <div className="overflow-hidden rounded-[10px]">
+          <img
+            src={service.image}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="aspect-[16/10] w-full object-cover grayscale-[30%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[5/4]"
+          />
+        </div>
+      </div>
+    </Reveal>
   );
 }
 
 export function Services() {
-  const [active, setActive] = useState(0);
-
   return (
     <section id="services" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -143,32 +146,10 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,8fr)_minmax(0,3fr)] lg:gap-14">
-          <ul className="min-w-0 border-b border-rule">
-            {SERVICES.map((service, i) => (
-              <ServiceRow key={service.num} service={service} onActive={() => setActive(i)} />
-            ))}
-          </ul>
-
-          <div className="hidden lg:block">
-            <div className="sticky top-28">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-[10px] bg-muted">
-                {SERVICES.map((service, i) => (
-                  <img
-                    key={service.num}
-                    src={service.image}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover grayscale-[30%] transition-opacity duration-700 ${
-                      i === active ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
-                ))}
-              </div>
-              <p className="type-meta mt-4 text-muted-foreground">{SERVICES[active]?.name}</p>
-            </div>
-          </div>
+        <div className="mt-10 border-b border-rule">
+          {SERVICES.map((service, i) => (
+            <ServiceBlock key={service.num} service={service} flip={i % 2 === 1} />
+          ))}
         </div>
       </div>
     </section>
