@@ -6,6 +6,7 @@ import { WhyAsa } from "@/components/asa/WhyAsa";
 import { Experience } from "@/components/asa/Experience";
 import { Challenges } from "@/components/asa/Challenges";
 import { ContactForm } from "@/components/asa/ContactForm";
+import { Eyebrow } from "@/components/asa/Eyebrow";
 import logoLight from "@/assets/asa-logo-light.png.asset.json";
 import heroAsa from "@/assets/hero-asa.jpg.asset.json";
 import jhonPhoto from "@/assets/jhon-luna.png.asset.json";
@@ -133,9 +134,7 @@ function Index() {
         <section id="projects" className="bg-warm-white py-20 md:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="border-t border-rule pt-8">
-              <p className="type-label mb-8 text-muted-foreground">
-                <span className="mr-4 text-asa-blue">05</span>Selected project
-              </p>
+              <Eyebrow num="05">Selected project</Eyebrow>
               <h2 className="type-h2 max-w-[18ch]">Experience applied where operational performance is at stake.</h2>
             </Reveal>
 
@@ -149,8 +148,8 @@ function Index() {
 
                 <dl className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-3">
                   {FEATURED_PROJECT.results.map((r) => (
-                    <div key={r.label} className="min-w-0 bg-background px-5 py-6">
-                      <dt className="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-none tracking-[-0.03em] text-asa-blue">
+                    <div key={r.label} className="group min-w-0 bg-background px-5 py-7 transition-colors duration-500 hover:bg-warm-white">
+                      <dt className="font-display text-[clamp(2rem,3.4vw,2.9rem)] leading-none tracking-[-0.03em] text-asa-blue">
                         {r.value}
                       </dt>
                       <dd className="type-meta mt-3 text-muted-foreground">{r.label}</dd>
@@ -189,9 +188,9 @@ function Index() {
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
-                <p className="type-label mb-10 text-muted-foreground">
-                  <span className="mr-4 text-asa-blue">06</span>Leadership
-                </p>
+                <Eyebrow num="06" className="mb-10">
+                  Leadership
+                </Eyebrow>
                 <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
               </div>
               <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
@@ -236,9 +235,9 @@ function Index() {
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-16 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-24">
               <div>
-                <p className="type-label mb-10 text-light-blue/70">
-                  <span className="mr-4 text-light-blue">07</span>Contact
-                </p>
+                <Eyebrow num="07" invert className="mb-10">
+                  Contact
+                </Eyebrow>
                 <h2 className="type-h2 max-w-[14ch]">Let's discuss your operational challenge.</h2>
                 <p className="type-lead mt-10 max-w-[42ch] text-light-blue/80">
                   Tell us what you need to strengthen, solve or execute. We will come back with a clear view of scope
