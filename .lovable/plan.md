@@ -1,44 +1,36 @@
-# Rediseño completo (excepto el hero)
+# Rediseño estructural por secciones (hero intacto)
 
-Objetivo: elevar toda la web a un nivel más premium y editorial, manteniendo intactos el hero, la identidad ASA (navy, azul ASA, Archivo + IBM Plex Mono) y todo el copy actual. Se rediseña la composición, el ritmo y las interacciones de cada sección.
+El cambio es de **estructura**, no de estilo: cada sección cambia de layout y de forma de presentar el contenido. Se mantiene el hero tal cual, la marca (navy, azul ASA, Archivo + IBM Plex Mono) y todo el copy actual.
 
-## Qué se mantiene igual
-- Hero: imagen, gradiente, titular, subtítulo, botones y línea "Strengthen · Solve · Execute".
-- Todos los textos, métricas y nombres de servicios/proyecto/liderazgo.
-- Paleta, tipografías, navegación y estructura de secciones.
-- Backend, formulario de contacto e integraciones MCP.
+## Estructura actual → estructura nueva
 
-## Qué se rediseña
+**Services (01)** — hoy: lista de filas con panel de imagen lateral fijo.
+Nueva: secuencia de bloques a ancho completo, uno por servicio, alternando lado de imagen (zig-zag). Cada bloque: número grande fuera de la caja de texto, statement como titular, nombre del servicio como subtítulo mono, capacidades en dos columnas debajo. La imagen ocupa la mitad del bloque con pin/paralaje al hacer scroll.
 
-**Header**
-Barra minimal con línea de progreso de scroll y numeración de sección activa; menú móvil a pantalla completa tipo editorial.
+**Why ASA (02)** — hoy: 4 tarjetas iguales en fila.
+Nueva: retícula bento asimétrica 2×2 con pesos distintos (una tarjeta doble ancho, tres compactas) y el número como marca de agua de fondo.
 
-**Services (01)**
-Filas numeradas a pantalla completa con línea divisoria fina, número grande en el margen, statement en azul ASA y capacidades en dos columnas. Imagen lateral con revelado por máscara al entrar en viewport y ligero paralaje.
+**Experience (03)** — hoy: bloque de cifras + logos.
+Nueva: banda a pantalla completa en navy dividida en tres franjas horizontales: titular editorial arriba, cifras en fila con reglas técnicas entre ellas, logos de clientes en una franja inferior separada por línea.
 
-**Why ASA (02)**
-De 4 tarjetas iguales a una retícula asimétrica (bento): la primera tarjeta ocupa mayor peso, resto compacto. Número enorme como marca de agua, línea de acento animada al hover.
+**Challenges (04)** — hoy: lista de definición de 5 filas.
+Nueva: layout dos columnas sticky — a la izquierda el índice numerado de los 5 retos (fijo mientras se hace scroll), a la derecha el detalle de cada reto con su imagen de apoyo. En móvil se convierte en acordeón apilado.
 
-**Experience (03)**
-Composición editorial a dos tercios: bloque de cifras con reglas técnicas y contador animado al entrar en viewport. Tira de logos estática con revelado de color individual al hover.
+**Projects (05)** — hoy: texto + imagen lado a lado.
+Nueva: caso de estudio a ancho completo: imagen grande de portada arriba con el título superpuesto, debajo una franja de métricas (+38%, +29%, +54%) a tres columnas, y el detalle del proyecto en columna estrecha centrada.
 
-**Challenges (04)**
-Lista de definición convertida en filas expansibles/apiladas con imagen de apoyo revelada al hover en desktop y visible en móvil, manteniendo los 5 textos actuales.
+**Leadership (06)** — hoy: dos tarjetas simétricas con foto pequeña.
+Nueva: dos bloques de perfil a ancho completo apilados, foto en formato retrato grande a un lado (alternando), declaración en tipografía editorial y expertise como lista numerada mono.
 
-**Projects (05)**
-Caso de estudio a pantalla ancha: imagen grande con paralaje, métricas (+38%, +29%, +54%) en tipografía display con contador animado, descripción en columna estrecha.
+**Contact (07)** — hoy: texto izquierda + formulario derecha.
+Nueva: cabecera de sección a ancho completo, y debajo formulario a dos columnas (datos / mensaje) sobre navy, con campos de línea inferior. Misma lógica de envío.
 
-**Leadership (06)**
-Retratos más grandes en formato editorial, nombre superpuesto con regla técnica y lista de expertise en columnas monoespaciadas.
-
-**Contact (07)**
-Formulario sobre navy con campos de línea inferior, foco en azul ASA y estado de envío refinado. Misma lógica de envío.
-
-**Footer**
-Retícula editorial con logo grande, navegación numerada y datos de contacto.
+**Header y footer**
+Header: indicador de sección activa numerado y línea de progreso de scroll; menú móvil a pantalla completa.
+Footer: retícula editorial de tres columnas (logo, navegación numerada, contacto).
 
 ## Detalles técnicos
-- Sin librerías nuevas: se reutilizan `Reveal.tsx`, `framer-motion` (ya instalado) y tokens de `src/styles.css`.
-- Se añaden tokens/utilidades de espaciado y una utilidad de paralaje ligero en `src/styles.css`; nada hardcodeado en componentes.
-- Se respeta `prefers-reduced-motion` en contadores y paralaje.
+- Sin librerías nuevas: `Reveal.tsx`, `framer-motion` (ya instalado) y tokens de `src/styles.css`.
+- Nuevos componentes de sección donde el layout cambia por completo; se conservan datos y copy en su sitio actual y `src/lib/asa-content.ts` sin cambios.
+- Sticky/paralaje respetando `prefers-reduced-motion`.
 - Verificación con Playwright a 1280 / 1440 / 768 / 390 px, sin scroll horizontal.
