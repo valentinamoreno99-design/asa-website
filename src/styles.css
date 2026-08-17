@@ -42,6 +42,7 @@
   --color-navy-deep: var(--navy-deep);
   --color-asa-blue: var(--asa-blue);
   --color-light-blue: var(--light-blue);
+  --color-electric-blue: var(--electric-blue);
   --color-warm-white: var(--warm-white);
   --color-rule: var(--rule);
   --color-rule-invert: var(--rule-invert);
@@ -60,6 +61,7 @@
   --navy-deep: oklch(0.235 0.05 260);
   --asa-blue: oklch(0.52 0.145 254);
   --light-blue: oklch(0.925 0.035 250);
+  --electric-blue: oklch(0.72 0.19 248);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.255 0.045 258);
   --popover: oklch(1 0 0);

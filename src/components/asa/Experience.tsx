@@ -49,32 +49,31 @@ export function Experience() {
 
           <Reveal delay={120} className="mt-14">
             <p className="type-label mb-8 text-muted-foreground">Selected client experience</p>
-            <ClientLogos />
+            <ClientLogos invert={false} />
           </Reveal>
         </div>
       </div>
 
-      {/* Dark band — anonymous case study */}
+      {/* Dark band — anonymous case study, presented as a distinct card */}
       <div className="bg-navy py-20 text-primary-foreground md:py-28">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-          <Reveal className="border-t border-rule-invert pt-8">
-            <p className="type-label text-light-blue/70">
-              <span className="mr-4 text-light-blue">Case</span>
-              Regional A320 operator · Americas
-            </p>
-
-            <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-              <div className="min-w-0">
+          <Reveal className="overflow-hidden rounded-[18px] border border-white/12 bg-white/[0.04] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] backdrop-blur-[2px]">
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+              <div className="relative min-w-0">
                 <img
                   src={camo.url}
                   alt="Aircraft in a hangar at sunset during scheduled maintenance"
                   loading="lazy"
-                  className="aspect-[4/3] w-full rounded-[10px] object-cover"
+                  className="h-56 w-full object-cover sm:h-72 lg:h-full lg:min-h-[520px]"
                 />
+                <span className="type-label absolute top-5 left-5 rounded-full bg-asa-blue px-4 py-2 text-primary-foreground">
+                  Case study
+                </span>
               </div>
 
-              <div className="min-w-0 self-center">
-                <h3 className="type-h2 max-w-[20ch]">Operational transformation & technical upskilling.</h3>
+              <div className="min-w-0 self-center p-6 sm:p-10 lg:p-14">
+                <p className="type-label text-light-blue/70">Regional A320 operator · Americas</p>
+                <h3 className="type-h2 mt-5 max-w-[20ch]">Operational transformation &amp; technical upskilling.</h3>
                 <p className="mt-6 max-w-[54ch] text-[1rem] leading-relaxed text-light-blue/80">
                   On-site shadowing, AOG support and structural troubleshooting criteria implemented directly in line
                   and base maintenance — reducing hangar downtime and removing unnecessary OEM escalations.
@@ -84,9 +83,9 @@ export function Experience() {
                   {CASE_RESULTS.map((r) => (
                     <li
                       key={r.label}
-                      className="flex min-w-0 items-baseline justify-between gap-6 bg-navy px-6 py-6 transition-colors duration-500 hover:bg-white/[0.04] md:px-8"
+                      className="flex min-w-0 items-baseline justify-between gap-4 bg-navy px-5 py-5 transition-colors duration-500 hover:bg-white/[0.05] sm:px-8 sm:py-6"
                     >
-                      <span className="font-display text-[clamp(1.9rem,3.2vw,2.75rem)] leading-none tracking-[-0.045em] text-light-blue">
+                      <span className="font-display text-[clamp(1.6rem,5vw,2.5rem)] leading-none tracking-[-0.045em] text-light-blue">
                         {r.value}
                       </span>
                       <span className="type-meta max-w-[18ch] text-right text-primary-foreground/70">{r.label}</span>
