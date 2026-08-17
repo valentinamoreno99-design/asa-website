@@ -121,6 +121,7 @@ function ServiceRow({ service, onActive }: { service: Service; onActive: () => v
           </div>
         </div>
       </Reveal>
+      <span className="pointer-events-none absolute top-[-1px] left-0 h-px w-0 bg-asa-blue transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
     </li>
   );
 }
