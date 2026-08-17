@@ -28,7 +28,7 @@ export function Experience() {
   return (
     <section id="experience">
       {/* Dark band — what we have achieved */}
-      <div className="bg-navy-deep py-20 text-primary-foreground md:py-28">
+      <div className="bg-navy-deep py-16 text-primary-foreground md:py-22">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <Reveal className="border-t border-rule-invert pt-8">
             <Eyebrow num="04" invert>
@@ -58,9 +58,9 @@ export function Experience() {
             ))}
           </Reveal>
 
-          <Reveal delay={120} className="mt-14 grid gap-12 border-b border-rule-invert pb-14 lg:grid-cols-2 lg:gap-16">
+          <Reveal delay={120} className="mt-12 grid gap-12 border-b border-rule-invert pb-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="type-label text-asa-blue/80">Experience built across</p>
+              <p className="type-label text-light-blue/90">Experience built across</p>
               <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
                 {REGIONS.map((region) => (
                   <span
@@ -74,7 +74,7 @@ export function Experience() {
             </div>
 
             <div>
-              <p className="type-label text-asa-blue/80">The environments our people have worked inside</p>
+              <p className="type-label text-light-blue/90">The environments our people have worked inside</p>
               <ul className="mt-5 divide-y divide-rule-invert">
                 {ENVIRONMENTS.map((env) => (
                   <li key={env} className="type-label py-3.5 text-primary-foreground/80 first:pt-0 last:pb-0">
@@ -93,7 +93,7 @@ export function Experience() {
       </div>
 
       {/* Dark band — anonymous case study, presented as a distinct card */}
-      <div className="bg-navy py-20 text-primary-foreground md:py-28">
+      <div className="bg-navy py-16 text-primary-foreground md:py-22">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <Reveal className="overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.04] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] backdrop-blur-[2px]">
             <div className="grid gap-0 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
