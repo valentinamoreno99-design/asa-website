@@ -28,7 +28,7 @@ export const ASA_SERVICES: AsaService[] = [
   },
   {
     number: "02",
-    name: "Technical Control & Line Efficiency",
+    name: "Technical Control & Line Operations",
     statement: "Supporting faster decisions on the line",
     description:
       "Stronger technical control and line decision-making across troubleshooting, deferred defects, recovery coordination and the traceability of technical decisions.",
@@ -43,7 +43,7 @@ export const ASA_SERVICES: AsaService[] = [
   },
   {
     number: "03",
-    name: "Audit, Compliance & Asset Protection",
+    name: "Compliance, Audits & Asset Protection",
     statement: "Protecting compliance and asset value",
     description:
       "Technical control, evidence management and senior oversight for audits, records, MRO events, aircraft transitions and asset-protection projects.",
@@ -58,7 +58,7 @@ export const ASA_SERVICES: AsaService[] = [
   },
   {
     number: "04",
-    name: "Technical Development & Leadership",
+    name: "Technical Development & Leadership Mentoring",
     statement: "Building stronger technical judgement",
     description:
       "Technical and leadership capability built through specialized courses, mentoring, shadowing and applied practice designed around the client's operation.",

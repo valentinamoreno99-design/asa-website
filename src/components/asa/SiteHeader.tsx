@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import logoDark from "@/assets/asa-logo-dark.png.asset.json";
-import logoLight from "@/assets/asa-logo-light.png.asset.json";
+import logoDark from "@/assets/primary-logo-dark-2.png.asset.json";
+import logoLight from "@/assets/primary-logo-light-2.png.asset.json";
 
 const NAV = [
-  { num: "01", label: "Services", href: "#services" },
-  { num: "02", label: "Why ASA", href: "#why-asa" },
-  { num: "03", label: "Projects", href: "#projects" },
-  { num: "04", label: "Leadership", href: "#leadership" },
-  { num: "05", label: "Contact", href: "#contact" },
+  { num: "01", label: "Challenges", href: "#challenges" },
+  { num: "02", label: "Services", href: "#services" },
+  { num: "03", label: "Why ASA", href: "#why-asa" },
+  { num: "04", label: "Experience", href: "#experience" },
+  { num: "05", label: "Leadership", href: "#leadership" },
+  { num: "06", label: "Contact", href: "#contact" },
 ];
 
 export function SiteHeader() {
@@ -62,7 +63,7 @@ export function SiteHeader() {
           />
         </a>
 
-        <nav className="hidden justify-center gap-8 lg:flex">
+        <nav className="hidden justify-center gap-6 lg:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -79,7 +80,7 @@ export function SiteHeader() {
 
         <div className="flex shrink-0 items-center gap-4">
           <span className="type-label hidden opacity-55 lg:inline">
-            {activeItem ? `${activeItem.num} / 05` : "00 / 05"}
+            {activeItem ? `${activeItem.num} / 06` : "00 / 06"}
           </span>
           <button
             type="button"

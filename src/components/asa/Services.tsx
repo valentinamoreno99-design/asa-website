@@ -1,10 +1,10 @@
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/asa/Eyebrow";
-import mcc from "@/assets/mcc.jpg";
-import engineDetail from "@/assets/engine-detail.jpg";
-import planningOffice from "@/assets/planning-office.jpg";
-import auditRecords from "@/assets/audit-records.jpg";
-import transitionApron from "@/assets/transition-apron.jpg";
+import trainings from "@/assets/technical-trainings.png.asset.json";
+import camo from "@/assets/airthworthiness-camo.png.asset.json";
+import lineOps from "@/assets/maintenace-line.png.asset.json";
+import transfers from "@/assets/transfers.jpeg.asset.json";
+import planning from "@/assets/planning.png.asset.json";
 
 type Service = {
   num: string;
@@ -12,11 +12,27 @@ type Service = {
   name: string;
   capabilities: string[];
   image: string;
+  alt: string;
 };
 
 const SERVICES: Service[] = [
   {
     num: "01",
+    statement: "Build stronger technical judgement inside your own teams.",
+    name: "Technical Development & Leadership Mentoring",
+    capabilities: [
+      "Specialized and ATA-focused courses",
+      "Advanced troubleshooting",
+      "Mentoring, coaching and shadowing",
+      "Supervisor and leadership development",
+      "Competency assessment",
+      "Post-training follow-up",
+    ],
+    image: trainings.url,
+    alt: "ASA instructor leading a technical training session on engine systems",
+  },
+  {
+    num: "02",
     statement: "Strengthen airworthiness capacity when internal teams are stretched.",
     name: "Airworthiness & CAMO Management",
     capabilities: [
@@ -26,12 +42,13 @@ const SERVICES: Service[] = [
       "Technical records",
       "Embedded team capacity",
     ],
-    image: planningOffice,
+    image: camo.url,
+    alt: "Aircraft in a hangar at sunset during scheduled maintenance",
   },
   {
-    num: "02",
+    num: "03",
     statement: "Make faster, better-supported technical decisions on the line.",
-    name: "Technical Control & Line Efficiency",
+    name: "Technical Control & Line Operations",
     capabilities: [
       "MCC / MOC support",
       "Defect and recurrent-defect analysis",
@@ -40,12 +57,13 @@ const SERVICES: Service[] = [
       "Recovery coordination",
       "Technical-control mentoring",
     ],
-    image: mcc,
+    image: lineOps.url,
+    alt: "Technicians working inside an aircraft engine cowling during line maintenance",
   },
   {
-    num: "03",
+    num: "04",
     statement: "Protect compliance and asset value through audits, MRO events and transitions.",
-    name: "Audit, Compliance & Asset Protection",
+    name: "Compliance, Audits & Asset Protection",
     capabilities: [
       "Audit preparation and finding closure",
       "Corrective actions",
@@ -54,21 +72,8 @@ const SERVICES: Service[] = [
       "MRO supervision",
       "Delivery, redelivery and transitions",
     ],
-    image: auditRecords,
-  },
-  {
-    num: "04",
-    statement: "Build stronger technical judgement inside your own teams.",
-    name: "Technical Development & Leadership",
-    capabilities: [
-      "Specialized and ATA-focused courses",
-      "Advanced troubleshooting",
-      "Mentoring, coaching and shadowing",
-      "Supervisor and leadership development",
-      "Competency assessment",
-      "Post-training follow-up",
-    ],
-    image: engineDetail,
+    image: transfers.url,
+    alt: "Technical team inspecting an aircraft on the apron during a transition",
   },
   {
     num: "05",
@@ -82,7 +87,8 @@ const SERVICES: Service[] = [
       "Cost and contract analysis",
       "Improvement roadmaps",
     ],
-    image: transitionApron,
+    image: planning.url,
+    alt: "Maintenance planner reviewing an aircraft planning schedule on screen",
   },
 ];
 
@@ -90,23 +96,23 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
   return (
     <Reveal
       as="article"
-      className="grid gap-8 border-t border-rule py-14 md:py-20 lg:grid-cols-2 lg:items-center lg:gap-16"
+      className="scroll-mt-28 grid gap-8 border-t border-rule py-12 md:py-16 lg:grid-cols-2 lg:items-center lg:gap-14"
     >
       <div className={`min-w-0 ${flip ? "lg:order-2" : ""}`}>
-        <div className="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-5 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-x-8">
-          <span className="font-display text-[clamp(2rem,3.4vw,3.25rem)] leading-none tracking-[-0.04em] text-asa-blue/30">
+        <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-x-8">
+          <span className="font-display text-[clamp(1.75rem,2.8vw,2.75rem)] leading-none tracking-[-0.04em] text-asa-blue/30">
             {service.num}
           </span>
           <div className="min-w-0">
-            <h3 className="max-w-[22ch] font-display text-[clamp(1.5rem,2.4vw,2.2rem)] leading-[1.08] tracking-[-0.03em]">
+            <h3 className="max-w-[24ch] font-display text-[clamp(1.35rem,2.1vw,1.95rem)] leading-[1.1] tracking-[-0.03em]">
               {service.statement}
             </h3>
-            <p className="type-label mt-6 text-asa-blue">{service.name}</p>
-            <ul className="mt-8 grid gap-x-10 gap-y-2.5 border-t border-rule pt-6 sm:grid-cols-2">
+            <p className="type-label mt-5 text-asa-blue">{service.name}</p>
+            <ul className="mt-7 grid gap-x-8 gap-y-2.5 border-t border-rule pt-5 sm:grid-cols-2">
               {service.capabilities.map((c) => (
                 <li
                   key={c}
-                  className="relative pl-4 text-[0.9rem] leading-relaxed text-muted-foreground before:absolute before:top-[0.7em] before:left-0 before:h-1 before:w-1 before:rounded-full before:bg-asa-blue"
+                  className="relative pl-4 text-[0.875rem] leading-relaxed text-muted-foreground before:absolute before:top-[0.7em] before:left-0 before:h-1 before:w-1 before:rounded-full before:bg-asa-blue"
                 >
                   {c}
                 </li>
@@ -120,10 +126,9 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
         <div className="overflow-hidden rounded-[10px]">
           <img
             src={service.image}
-            alt=""
-            aria-hidden="true"
+            alt={service.alt}
             loading="lazy"
-            className="aspect-[16/10] w-full object-cover grayscale-[30%] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[5/4]"
+            className="aspect-[16/10] w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[4/3]"
           />
         </div>
       </div>
@@ -137,7 +142,7 @@ export function Services() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <Eyebrow num="01">Services</Eyebrow>
+            <Eyebrow num="02">Services — where we help</Eyebrow>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
@@ -146,9 +151,27 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-10 border-b border-rule">
+        {/* Scan index — all five areas visible at a glance */}
+        <Reveal delay={60} className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-5">
+          {SERVICES.map((service) => (
+            <a
+              key={service.num}
+              href={`#service-${service.num}`}
+              className="group flex min-w-0 flex-col justify-between gap-6 bg-background p-5 transition-colors duration-500 hover:bg-warm-white"
+            >
+              <span className="type-label text-asa-blue">{service.num}</span>
+              <span className="font-display text-[0.98rem] leading-[1.2] tracking-[-0.02em] text-balance">
+                {service.name}
+              </span>
+            </a>
+          ))}
+        </Reveal>
+
+        <div className="mt-6 border-b border-rule">
           {SERVICES.map((service, i) => (
-            <ServiceBlock key={service.num} service={service} flip={i % 2 === 1} />
+            <div key={service.num} id={`service-${service.num}`}>
+              <ServiceBlock service={service} flip={i % 2 === 1} />
+            </div>
           ))}
         </div>
       </div>
