@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/asa/SiteHeader";
 import { Services } from "@/components/asa/Services";
@@ -6,6 +7,7 @@ import { WhyAsa } from "@/components/asa/WhyAsa";
 import { Experience } from "@/components/asa/Experience";
 import { Challenges } from "@/components/asa/Challenges";
 import { BrandStatement } from "@/components/asa/BrandStatement";
+import { ZoomParallax } from "@/components/asa/ZoomParallax";
 import { WhisperHeadline } from "@/components/asa/WhisperHeadline";
 import { ContactForm } from "@/components/asa/ContactForm";
 import { Eyebrow } from "@/components/asa/Eyebrow";
@@ -118,6 +120,7 @@ function Index() {
         <Services />
         <WhyAsa />
         <BrandStatement />
+        <ZoomParallax />
         <Experience />
 
         {/* Leadership */}
@@ -231,13 +234,17 @@ function Index() {
               <p className="type-label mb-6 text-light-blue/70">Contact</p>
               <a
                 href="mailto:contact@asaviationgroup.com"
-                className="link-underline type-meta text-primary-foreground/80 whitespace-pre-line"
+                className="type-meta flex items-center gap-3 text-primary-foreground/80 transition-colors hover:text-light-blue"
               >
-                contact@asaviationgroup.com{"\n"}
-                Advanced Solutions Aviation LLC{"\n"}
-                1401 Brickell Avenue Ste 330{"\n"}
-                Miami, Florida 33131
+                <Mail className="h-4 w-4 shrink-0 text-light-blue/70" aria-hidden="true" />
+                <span className="link-underline min-w-0 break-all">contact@asaviationgroup.com</span>
               </a>
+              <address className="type-meta mt-4 flex gap-3 not-italic text-primary-foreground/70">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-light-blue/70" aria-hidden="true" />
+                <span className="min-w-0 leading-[1.35] whitespace-pre-line">
+                  {"Advanced Solutions Aviation LLC\n1401 Brickell Avenue Ste 330\nMiami, Florida 33131"}
+                </span>
+              </address>
               <p className="type-meta mt-6 text-primary-foreground/60">Advise. Train. Execute.</p>
             </div>
           </div>

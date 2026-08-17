@@ -21,27 +21,44 @@ const CLIENT_TYPES = [
   "Investors & advisors",
 ];
 
-export function ClientLogos() {
-  return (
-    <div>
-      <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 border-y border-rule-invert py-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12">
-        {LOGOS.map((logo) => (
-          <li key={logo.name} className="flex min-w-0 items-center justify-center">
-            <img
-              src={logo.src}
-              alt={`${logo.name} logo`}
-              loading="lazy"
-              className="h-7 w-auto max-w-full object-contain opacity-55 brightness-0 invert transition-opacity duration-500 hover:opacity-90 md:h-8"
-            />
-          </li>
-        ))}
-      </ul>
+export function ClientLogos({ invert = true }: { invert?: boolean }) {
+  const track = [...LOGOS, ...LOGOS];
 
-      <div className="mt-10 flex flex-wrap gap-2.5">
+  return (
+    <div className="min-w-0">
+      <div
+        className={`relative overflow-hidden border-y py-8 md:py-10 ${
+          invert ? "border-rule-invert" : "border-rule"
+        }`}
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
+        <ul className="marquee-track flex w-max items-center gap-12 md:gap-20">
+          {track.map((logo, i) => (
+            <li key={`${logo.name}-${i}`} className="shrink-0">
+              <img
+                src={logo.src}
+                alt={i < LOGOS.length ? `${logo.name} logo` : ""}
+                aria-hidden={i >= LOGOS.length}
+                loading="lazy"
+                className={`h-6 w-auto object-contain opacity-55 transition-opacity duration-500 hover:opacity-100 md:h-8 ${
+                  invert ? "brightness-0 invert" : "grayscale"
+                }`}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-8 flex flex-wrap gap-2.5">
         {CLIENT_TYPES.map((type) => (
           <span
             key={type}
-            className="type-label rounded-full border border-rule-invert px-4 py-2.5 text-primary-foreground/60"
+            className={`type-label rounded-full border px-4 py-2.5 ${
+              invert ? "border-rule-invert text-primary-foreground/60" : "border-rule text-muted-foreground"
+            }`}
           >
             {type}
           </span>
