@@ -209,7 +209,7 @@ function Index() {
                 className="h-8 w-auto"
               />
               <p className="type-meta mt-6 max-w-[30ch] text-primary-foreground/60">
-                Aviation technical & operational partner.
+                Expertise that drives operational excellence.
               </p>
             </div>
 
@@ -230,12 +230,15 @@ function Index() {
             <div>
               <p className="type-label mb-6 text-light-blue/70">Contact</p>
               <a
-                href="mailto:valentina@asaviationgroup.com"
-                className="link-underline type-meta text-primary-foreground/80"
+                href="mailto:contact@asaviationgroup.com"
+                className="link-underline type-meta text-primary-foreground/80 whitespace-pre-line"
               >
-                valentina@asaviationgroup.com
+                contact@asaviationgroup.com{"\n"}
+                Advanced Solutions Aviation LLC{"\n"}
+                1401 Brickell Avenue Ste 330{"\n"}
+                Miami, Florida 33131
               </a>
-              <p className="type-meta mt-6 text-primary-foreground/60">Strengthen. Solve. Execute.</p>
+              <p className="type-meta mt-6 text-primary-foreground/60">Advise. Train. Execute.</p>
             </div>
           </div>
 
