@@ -1,47 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/asa/Eyebrow";
-import camo from "@/assets/airthworthiness-camo.png.asset.json";
-import lineOps from "@/assets/maintenace-line.png.asset.json";
-import transfers from "@/assets/transfers.jpeg.asset.json";
-import planning from "@/assets/planning.png.asset.json";
-import courses from "@/assets/especialized-courses.jpeg.asset.json";
 
 const CHALLENGES = [
   {
     num: "01",
     title: "Airworthiness capacity",
     body: "Additional technical support when internal resources are stretched.",
-    image: camo.url,
-    alt: "Aircraft in a hangar at sunset during scheduled maintenance",
   },
   {
     num: "02",
     title: "Technical decision-making",
     body: "Stronger analysis and faster decisions around aircraft availability.",
-    image: lineOps.url,
-    alt: "Technicians troubleshooting inside an aircraft engine cowling",
   },
   {
     num: "03",
     title: "Compliance & audits",
     body: "Better preparation, evidence and closure of technical findings.",
-    image: planning.url,
-    alt: "Planner reviewing maintenance records and schedules on screen",
   },
   {
     num: "04",
     title: "MRO / delivery / transitions",
     body: "Technical oversight when asset condition and contractual risk matter.",
-    image: transfers.url,
-    alt: "Technical team inspecting an aircraft on the apron",
   },
   {
     num: "05",
     title: "Team capability",
     body: "Developing people, judgement and supervision inside the organization.",
-    image: courses.url,
-    alt: "Aviation professionals in a specialized technical course",
   },
 ];
 
@@ -111,15 +96,7 @@ export function Challenges() {
                 className="border-t border-rule py-9 first:border-t-0 first:pt-0 md:py-12"
               >
                 <Reveal>
-                  <div className="overflow-hidden rounded-[10px]">
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      loading="lazy"
-                      className="aspect-[16/9] w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="mt-6 grid grid-cols-[3rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4rem_minmax(0,1fr)] md:gap-x-8">
+                  <div className="grid grid-cols-[3rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4rem_minmax(0,1fr)] md:gap-x-8">
                     <span className="type-label pt-2 text-asa-blue">{item.num}</span>
                     <div className="min-w-0">
                       <h3 className="font-display text-[clamp(1.25rem,1.9vw,1.7rem)] leading-[1.1] tracking-[-0.025em]">
