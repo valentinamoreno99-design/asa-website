@@ -9,9 +9,8 @@ type ScrollDimListProps = {
 };
 
 /**
- * Single-line scroll-driven phrase switcher. The active phrase lights up in
- * electric blue while the others collapse to zero width and fade out. The
- * container width follows the active phrase without ghosting from hidden items.
+ * Single-line scroll-driven phrase switcher. Only the active phrase is
+ * rendered, fading to electric blue as the user scrolls through the section.
  */
 export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProps) {
   const root = useRef<HTMLSpanElement>(null);
@@ -46,20 +45,12 @@ export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProp
     <span ref={root} className={`relative inline-block align-baseline ${className}`}>
       {lead ? <p className="type-label mb-10 text-light-blue/70">{lead}</p> : null}
 
-      {items.map((text, i) => (
-        <span
-          key={text}
-          data-dim-phrase
-          className="inline-block overflow-hidden whitespace-nowrap font-display text-[clamp(1.05rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.03em] transition-[max-width,opacity] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
-          style={{
-            maxWidth: i === activeIndex ? "1000px" : "0px",
-            opacity: i === activeIndex ? 1 : 0,
-            color: i === activeIndex ? "var(--electric-blue)" : "inherit",
-          }}
-        >
-          {text}
-        </span>
-      ))}
+      <span
+        data-dim-phrase
+        className="font-display text-[clamp(1.05rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.03em] text-[var(--electric-blue)] transition-opacity duration-500"
+      >
+        {items[activeIndex]}
+      </span>
     </span>
   );
 }
