@@ -10,18 +10,19 @@ type ScrollDimListProps = {
 
 /**
  * Single-line scroll-driven phrase switcher: the active phrase lights up in
- * electric blue while the others stay hidden. The container width animates to
- * fit the active phrase so there is no ghosting from longer inactive phrases.
+ * electric blue while the others fade out. The container width animates to fit
+ * the active phrase so no ghost text from longer phrases appears.
  */
 export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProps) {
   const root = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
+  const measure = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [widths, setWidths] = useState<number[]>([]);
 
   useEffect(() => {
-    if (!list.current) return;
-    const measured = Array.from(list.current.children).map(
+    if (!measure.current) return;
+    const measured = Array.from(measure.current.children).map(
       (child) => (child as HTMLElement).getBoundingClientRect().width
     );
     setWidths(measured);
@@ -57,6 +58,20 @@ export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProp
   return (
     <div ref={root} className={`relative inline-block align-baseline ${className}`}>
       {lead ? <p className="type-label mb-10 text-light-blue/70">{lead}</p> : null}
+
+      {/* Off-screen measurement container so widths are captured exactly once. */}
+      <ul
+        ref={measure}
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 h-0 overflow-hidden opacity-0"
+      >
+        {items.map((text) => (
+          <li key={`m-${text}`} className="whitespace-nowrap font-display text-[clamp(1.25rem,2.4vw,2rem)] leading-[1.2] tracking-[-0.03em]">
+            {text}
+          </li>
+        ))}
+      </ul>
+
       <ul
         ref={list}
         className="relative inline-block h-[1.2em] overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
