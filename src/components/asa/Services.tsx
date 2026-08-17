@@ -128,9 +128,7 @@ export function Services() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <p className="type-label mb-8 text-muted-foreground">
-              <span className="mr-4 text-asa-blue">01</span>Services
-            </p>
+            <Eyebrow num="01">Services</Eyebrow>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
