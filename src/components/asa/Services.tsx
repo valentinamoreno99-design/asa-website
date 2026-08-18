@@ -1,9 +1,9 @@
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/asa/Eyebrow";
 import trainings from "@/assets/technical-trainings.png.asset.json";
-import camo from "@/assets/airthworthiness-camo.png.asset.json";
-import lineOps from "@/assets/maintenace-line.png.asset.json";
-import transfers from "@/assets/transfers.jpeg.asset.json";
+import camo from "@/assets/ops-8.jpeg.asset.json";
+import lineOps from "@/assets/ops-7.jpeg.asset.json";
+import transfers from "@/assets/ops-2.jpeg.asset.json";
 import planning from "@/assets/planning.png.asset.json";
 
 type Service = {
@@ -46,7 +46,7 @@ const SERVICES: Service[] = [
       "Embedded team capacity",
     ],
     image: camo.url,
-    alt: "Aircraft in a hangar at sunset during scheduled maintenance",
+    alt: "Cockpit maintenance data page showing airframe and APU hours and cycles",
   },
   {
     num: "03",
@@ -62,7 +62,7 @@ const SERVICES: Service[] = [
       "Technical-control mentoring",
     ],
     image: lineOps.url,
-    alt: "Technicians working inside an aircraft engine cowling during line maintenance",
+    alt: "Nose landing gear maintenance in the hangar with access platform",
   },
   {
     num: "04",
@@ -78,7 +78,7 @@ const SERVICES: Service[] = [
       "Delivery, redelivery and transitions",
     ],
     image: transfers.url,
-    alt: "Technical team inspecting an aircraft on the apron during a transition",
+    alt: "White-tail widebody aircraft on the apron during a delivery transition",
   },
   {
     num: "05",
@@ -102,7 +102,7 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
   return (
     <Reveal
       as="article"
-      className="scroll-mt-28 grid gap-8 border-t border-rule py-10 md:py-14 lg:grid-cols-2 lg:items-center lg:gap-14"
+      className="scroll-mt-28 grid gap-7 border-t border-rule py-8 md:py-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-12"
     >
       <div className={`min-w-0 ${flip ? "lg:order-2" : ""}`}>
         <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-x-8">
@@ -137,7 +137,7 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
             src={service.image}
             alt={service.alt}
             loading="lazy"
-            className="aspect-[16/10] w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[4/3]"
+            className="aspect-[16/9] w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] lg:aspect-[5/4] lg:max-h-[340px]"
           />
         </div>
       </div>
@@ -161,23 +161,7 @@ Every engagement fits one of three modes — <span className="text-foreground">S
           </p>
         </Reveal>
 
-        {/* Scan index — all five areas visible at a glance */}
-        <Reveal delay={60} className="mt-10 grid gap-px overflow-hidden rounded-[8px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-5">
-          {SERVICES.map((service) => (
-            <a
-              key={service.num}
-              href={`#service-${service.num}`}
-              className="group flex min-w-0 flex-col justify-between gap-6 bg-background p-5 transition-colors duration-500 hover:bg-warm-white"
-            >
-              <span className="type-label text-asa-blue">{service.mode}</span>
-              <span className="font-display text-[0.98rem] leading-[1.2] tracking-[-0.02em] text-balance">
-                {service.name}
-              </span>
-            </a>
-          ))}
-        </Reveal>
-
-        <div className="mt-6 border-b border-rule">
+        <div className="mt-4 border-b border-rule">
           {SERVICES.map((service, i) => (
             <div key={service.num} id={`service-${service.num}`}>
               <ServiceBlock service={service} flip={i % 2 === 1} />
