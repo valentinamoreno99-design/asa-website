@@ -21,7 +21,7 @@ const ITEMS: Item[] = [
     src: hero.url,
     alt: "ASA specialists reviewing technical data beside an aircraft",
     className: "h-[26vh] w-[26vw] min-w-[240px]",
-    scaleFactor: 4,
+    scaleFactor: 4.6,
   },
   {
     src: camo.url,
