@@ -65,7 +65,7 @@ export function Challenges() {
           {CHALLENGES.map((item) => {
             const isActive = active === item.num;
             return (
-              <Reveal key={item.num} className={item.span}>
+              <Reveal key={item.num} className={`${item.span} h-full`}>
                 <div
                   onMouseEnter={() => setActive(item.num)}
                   onMouseLeave={() => setActive(null)}
