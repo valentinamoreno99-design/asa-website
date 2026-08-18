@@ -6,10 +6,10 @@ import { Services } from "@/components/asa/Services";
 import { WhyAsa } from "@/components/asa/WhyAsa";
 import { Experience } from "@/components/asa/Experience";
 import { Challenges } from "@/components/asa/Challenges";
-import { BrandStatement } from "@/components/asa/BrandStatement";
+import { TrustBar } from "@/components/asa/TrustBar";
 import { ZoomParallax } from "@/components/asa/ZoomParallax";
 import { WhisperHeadline } from "@/components/asa/WhisperHeadline";
-import { ContactForm } from "@/components/asa/ContactForm";
+import { FinalCTA } from "@/components/asa/FinalCTA";
 import { Eyebrow } from "@/components/asa/Eyebrow";
 import logoLight from "@/assets/primary-logo-light-2.png.asset.json";
 import heroAsa from "@/assets/hero-section-3.png.asset.json";
@@ -76,7 +76,7 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="relative min-h-[92svh] overflow-hidden bg-navy-deep text-primary-foreground">
+        <section className="relative min-h-[86svh] overflow-hidden bg-navy-deep text-primary-foreground">
           <img
             src={heroAsa.url}
             alt="Two ASA aviation specialists reviewing technical data on a tablet beside an aircraft engine in a hangar"
@@ -86,13 +86,13 @@ function Index() {
           />
 
           <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--navy-deep)_18%,transparent_92%)]" />
-          <div className="relative mx-auto flex min-h-[92svh] max-w-[1440px] flex-col justify-end px-6 pt-36 pb-14 md:px-10 md:pb-20">
-            <p className="type-label mb-10 text-light-blue">Aviation technical & operational partner</p>
+          <div className="relative mx-auto flex min-h-[86svh] max-w-[1440px] flex-col justify-end px-6 pt-32 pb-12 md:px-10 md:pb-16">
+            <p className="type-label mb-8 text-light-blue">Aviation technical & operational partner</p>
             <WhisperHeadline
               text="Technical expertise for the challenges that keep your operation moving."
               className="type-display max-w-[17ch]"
             />
-            <div className="mt-12 grid gap-8 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+            <div className="mt-10 grid gap-8 border-t border-rule-invert pt-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
               <p className="type-lead max-w-[52ch] text-light-blue">
                 ASA supports airlines, MROs and lessors in strengthening technical capability, solving operational
                 problems and executing the work that keeps aircraft available and compliant.
@@ -112,23 +112,32 @@ function Index() {
                 </a>
               </div>
             </div>
-            <p className="type-meta mt-10 text-light-blue/70">Strengthen · Solve · Execute</p>
+            <p className="type-label mt-10 flex flex-wrap gap-x-3 text-light-blue/80">
+              <span className="text-primary-foreground">Strengthen</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-primary-foreground">Solve</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-primary-foreground">Execute</span>
+              <span className="ml-2 normal-case tracking-normal text-light-blue/60">
+                the three ways we work inside your operation
+              </span>
+            </p>
           </div>
         </section>
 
+        <TrustBar />
         <Challenges />
         <Services />
         <WhyAsa />
-        <BrandStatement />
         <ZoomParallax />
         <Experience />
 
         {/* Leadership */}
-        <section id="leadership" className="bg-background py-20 md:py-28">
+        <section id="leadership" className="bg-warm-white py-16 md:py-20">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
-                <Eyebrow num="05" className="mb-8">
+                <Eyebrow num="06" className="mb-8">
                   The leaders
                 </Eyebrow>
                 <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
@@ -139,16 +148,16 @@ function Index() {
               </p>
             </Reveal>
 
-            <div className="mt-12 grid gap-10 border-t border-rule pt-12 md:grid-cols-2 md:gap-12">
+            <div className="mt-10 grid gap-10 border-t border-rule pt-10 md:grid-cols-2 md:gap-12">
               {LEADERS.map((leader) => (
                 <Reveal key={leader.name} className="min-w-0">
                   <img
                     src={leader.photo}
                     alt={`Portrait of ${leader.name}`}
                     loading="lazy"
-                    className="aspect-[4/5] w-full rounded-[8px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
+                    className="aspect-[3/2] w-full rounded-[8px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
                   />
-                  <div className="mt-7 flex items-baseline justify-between gap-6 border-t border-rule pt-6">
+                  <div className="mt-6 flex items-baseline justify-between gap-6 border-t border-rule pt-6">
                     <p className="type-label text-asa-blue">{leader.role}</p>
                     <p className="type-meta text-muted-foreground">{leader.years}</p>
                   </div>
@@ -176,27 +185,8 @@ function Index() {
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contact" className="bg-navy py-20 text-primary-foreground md:py-28">
-          <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-            <Reveal className="border-t border-rule-invert pt-8">
-              <Eyebrow num="06" invert className="mb-8">
-                Contact
-              </Eyebrow>
-              <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-                <h2 className="type-h2 max-w-[16ch]">Let's discuss your operational challenge.</h2>
-                <p className="type-lead max-w-[44ch] self-end text-light-blue/80">
-                  Tell us what you need to strengthen, solve or execute. We will come back with a clear view of scope
-                  and the right technical profile.
-                </p>
-              </div>
-            </Reveal>
+        <FinalCTA />
 
-            <Reveal delay={80} className="mt-12">
-              <ContactForm />
-            </Reveal>
-          </div>
-        </section>
       </main>
 
       <footer className="bg-navy-deep pt-16 pb-10 text-primary-foreground">
