@@ -96,7 +96,7 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
   return (
     <Reveal
       as="article"
-      className="scroll-mt-28 grid gap-8 border-t border-rule py-12 md:py-16 lg:grid-cols-2 lg:items-center lg:gap-14"
+      className="scroll-mt-28 grid gap-8 border-t border-rule py-10 md:py-14 lg:grid-cols-2 lg:items-center lg:gap-14"
     >
       <div className={`min-w-0 ${flip ? "lg:order-2" : ""}`}>
         <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-x-8">
@@ -138,11 +138,11 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
 
 export function Services() {
   return (
-    <section id="services" className="bg-background py-20 md:py-28">
+    <section id="services" className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <Eyebrow num="02">Services — where we help</Eyebrow>
+            <Eyebrow num="03">Services — where we help</Eyebrow>
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">

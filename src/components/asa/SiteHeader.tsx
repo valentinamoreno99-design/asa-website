@@ -3,12 +3,12 @@ import logoDark from "@/assets/primary-logo-dark-2.png.asset.json";
 import logoLight from "@/assets/primary-logo-light-2.png.asset.json";
 
 const NAV = [
-  { num: "01", label: "Challenges", href: "#challenges" },
-  { num: "02", label: "Services", href: "#services" },
-  { num: "03", label: "Why ASA", href: "#why-asa" },
-  { num: "04", label: "Experience", href: "#experience" },
-  { num: "05", label: "Leadership", href: "#leadership" },
-  { num: "06", label: "Contact", href: "#contact" },
+  { label: "Challenges", href: "#challenges" },
+  { label: "Services", href: "#services" },
+  { label: "Why ASA", href: "#why-asa" },
+  { label: "Experience", href: "#experience" },
+  { label: "Leadership", href: "#leadership" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function SiteHeader() {
@@ -44,7 +44,6 @@ export function SiteHeader() {
   }, [open]);
 
   const dark = scrolled || open;
-  const activeItem = NAV.find((item) => item.href === activeHref);
 
   return (
     <header
@@ -68,20 +67,22 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className={`link-underline type-label pb-1 transition-opacity ${
-                activeHref === item.href ? "opacity-100" : "opacity-55 hover:opacity-100"
+              className={`link-underline type-label pb-1 font-medium tracking-[0.14em] transition-opacity ${
+                activeHref === item.href ? "opacity-100" : "opacity-80 hover:opacity-100"
               }`}
             >
-              <span className="mr-2 text-asa-blue">{item.num}</span>
               {item.label}
             </a>
           ))}
         </nav>
 
         <div className="flex shrink-0 items-center gap-4">
-          <span className="type-label hidden opacity-55 lg:inline">
-            {activeItem ? `${activeItem.num} / 06` : "00 / 06"}
-          </span>
+          <a
+            href="#contact"
+            className="type-label hidden font-medium tracking-[0.14em] opacity-80 transition-opacity hover:opacity-100 lg:inline"
+          >
+            Book a call
+          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -110,9 +111,8 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="grid grid-cols-[3rem_minmax(0,1fr)] items-baseline border-b border-rule py-6"
+                className="flex items-baseline border-b border-rule py-6"
               >
-                <span className="type-label text-asa-blue">{item.num}</span>
                 <span className="font-display text-[1.75rem] leading-none tracking-[-0.03em]">{item.label}</span>
               </a>
             ))}

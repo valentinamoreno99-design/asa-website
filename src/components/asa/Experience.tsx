@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/Reveal";
-import { ClientLogos } from "@/components/asa/ClientLogos";
 import { Eyebrow } from "@/components/asa/Eyebrow";
 import camo from "@/assets/airthworthiness-camo.png.asset.json";
 
@@ -28,10 +27,10 @@ export function Experience() {
   return (
     <section id="experience">
       {/* Dark band — what we have achieved */}
-      <div className="bg-navy-deep py-16 text-primary-foreground md:py-22">
+      <div className="bg-navy-deep py-14 text-primary-foreground md:py-20">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <Reveal className="border-t border-rule-invert pt-8">
-            <Eyebrow num="04" invert>
+            <Eyebrow num="05" invert>
               What we have achieved
             </Eyebrow>
             <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
@@ -85,15 +84,11 @@ export function Experience() {
             </div>
           </Reveal>
 
-          <Reveal delay={160} className="mt-14">
-            <p className="type-label mb-8 text-primary-foreground/70">Selected client experience</p>
-            <ClientLogos invert={true} />
-          </Reveal>
         </div>
       </div>
 
       {/* Dark band — anonymous case study, presented as a distinct card */}
-      <div className="bg-navy py-16 text-primary-foreground md:py-22">
+      <div className="bg-navy py-14 text-primary-foreground md:py-20">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
           <Reveal className="overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.04] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] backdrop-blur-[2px]">
             <div className="grid gap-0 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">

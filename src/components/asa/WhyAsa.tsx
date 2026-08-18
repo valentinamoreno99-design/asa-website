@@ -76,11 +76,11 @@ const POINTS = [
 
 export function WhyAsa() {
   return (
-    <section id="why-asa" className="bg-warm-white py-20 md:py-28">
+    <section id="why-asa" className="bg-warm-white py-16 md:py-20">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <Eyebrow num="03">Why ASA</Eyebrow>
+            <Eyebrow num="04">Why ASA</Eyebrow>
             <h2 className="type-h2 max-w-[17ch]">Senior expertise grounded in real operations.</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
