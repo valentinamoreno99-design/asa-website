@@ -51,11 +51,11 @@ export function Challenges() {
   }, []);
 
   return (
-    <section id="challenges" className="bg-background py-20 md:py-28">
+    <section id="challenges" className="bg-background py-16 md:py-20">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         <Reveal className="grid gap-8 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div>
-            <Eyebrow num="01">Why clients call ASA</Eyebrow>
+            <Eyebrow num="02">Why clients call ASA</Eyebrow>
             <h2 className="type-h2 max-w-[18ch]">When technical challenges start affecting the operation.</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
@@ -65,7 +65,7 @@ export function Challenges() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-14">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-14">
           {/* Sticky index — desktop */}
           <div className="hidden lg:block">
             <ol className="sticky top-28 border-t border-rule">

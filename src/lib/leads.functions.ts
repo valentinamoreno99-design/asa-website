@@ -4,10 +4,10 @@ import { z } from "zod";
 const leadSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
   company: z.string().trim().min(1, "Company is required").max(160),
-  email: z.string().trim().email("Enter a valid email").max(255),
+  email: z.string().trim().max(255).optional().default(""),
   role: z.string().trim().max(160).optional().default(""),
   focus: z.string().trim().max(160).optional().default(""),
-  message: z.string().trim().min(1, "Tell us briefly what you need").max(2000),
+  message: z.string().trim().max(2000).optional().default(""),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
