@@ -101,7 +101,7 @@ export function WhyAsa() {
                 <span className="text-asa-blue transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   <point.Mark />
                 </span>
-                <span className="type-label text-muted-foreground">{point.num}</span>
+                
               </div>
               <div>
                 <h3 className="font-display text-[clamp(1.15rem,1.5vw,1.4rem)] leading-[1.1] tracking-[-0.025em] uppercase">
