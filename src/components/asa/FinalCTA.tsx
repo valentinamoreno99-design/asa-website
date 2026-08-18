@@ -30,11 +30,11 @@ function RotatingWord() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="col-start-1 row-start-1 text-light-blue"
         >
-          {ROTATING[index]}
+          {ROTATING[index]}.
         </motion.span>
       </AnimatePresence>
       <span className="invisible col-start-1 row-start-1" aria-hidden="true">
-        fleet transition
+        fleet transition.
       </span>
     </span>
   );
@@ -72,7 +72,7 @@ export function FinalCTA() {
         <Reveal className="border-t border-rule-invert pt-10">
           <p className="type-label text-light-blue/70">Advise · Train · Execute</p>
           <h2 className="type-h2 mt-6 max-w-[20ch]">
-            Let&apos;s talk about your <RotatingWord />.
+            Let&apos;s talk about your <RotatingWord />
           </h2>
           <p className="type-lead mt-6 max-w-[52ch] text-light-blue/80">
             A 30-minute conversation with an ASA specialist — not an account manager. Tell us who you are and book
