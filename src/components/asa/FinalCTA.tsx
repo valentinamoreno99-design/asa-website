@@ -57,18 +57,24 @@ export function FinalCTA() {
   const send = useServerFn(submitLead);
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
+  // Stable per-attempt id: reused on retry so a double submit can never create two rows.
+  const submissionId = useRef<string | null>(null);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (state === "sending") return;
     const fd = new FormData(event.currentTarget);
     setState("sending");
     setError("");
+    if (!submissionId.current) submissionId.current = crypto.randomUUID();
     try {
       await send({
         data: {
+          submissionId: submissionId.current,
           name: String(fd.get("name") ?? ""),
           company: String(fd.get("company") ?? ""),
           role: String(fd.get("role") ?? ""),
+          source: "Website CTA",
         },
       });
       setState("done");
