@@ -8,6 +8,7 @@ import planning from "@/assets/planning.png.asset.json";
 
 type Service = {
   num: string;
+  mode: "Strengthen" | "Solve" | "Execute";
   statement: string;
   name: string;
   capabilities: string[];
@@ -18,6 +19,7 @@ type Service = {
 const SERVICES: Service[] = [
   {
     num: "01",
+    mode: "Strengthen",
     statement: "Build stronger technical judgement inside your own teams.",
     name: "Technical Development & Leadership Mentoring",
     capabilities: [
@@ -33,6 +35,7 @@ const SERVICES: Service[] = [
   },
   {
     num: "02",
+    mode: "Strengthen",
     statement: "Strengthen airworthiness capacity when internal teams are stretched.",
     name: "Airworthiness & CAMO Management",
     capabilities: [
@@ -47,6 +50,7 @@ const SERVICES: Service[] = [
   },
   {
     num: "03",
+    mode: "Solve",
     statement: "Make faster, better-supported technical decisions on the line.",
     name: "Technical Control & Line Operations",
     capabilities: [
@@ -62,6 +66,7 @@ const SERVICES: Service[] = [
   },
   {
     num: "04",
+    mode: "Execute",
     statement: "Protect compliance and asset value through audits, MRO events and transitions.",
     name: "Compliance, Audits & Asset Protection",
     capabilities: [
@@ -77,6 +82,7 @@ const SERVICES: Service[] = [
   },
   {
     num: "05",
+    mode: "Solve",
     statement: "Reshape how the operation performs, without stopping it.",
     name: "Operational Strategy & Transformation",
     capabilities: [
@@ -107,7 +113,10 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
             <h3 className="max-w-[24ch] font-display text-[clamp(1.35rem,2.1vw,1.95rem)] leading-[1.1] tracking-[-0.03em]">
               {service.statement}
             </h3>
-            <p className="type-label mt-5 text-asa-blue">{service.name}</p>
+            <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+              <span className="type-label border border-asa-blue/40 px-2.5 py-1 text-asa-blue">{service.mode}</span>
+              <p className="type-label text-muted-foreground">{service.name}</p>
+            </div>
             <ul className="mt-7 grid gap-x-8 gap-y-2.5 border-t border-rule pt-5 sm:grid-cols-2">
               {service.capabilities.map((c) => (
                 <li
@@ -146,8 +155,9 @@ export function Services() {
             <h2 className="type-h2 max-w-[16ch]">How can we support you?</h2>
           </div>
           <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
-            From additional technical capacity to hands-on execution, we work on the areas that keep your operation
-            moving.
+Every engagement fits one of three modes — <span className="text-foreground">Strengthen</span> capability,{" "}
+            <span className="text-foreground">Solve</span> a technical problem, or{" "}
+            <span className="text-foreground">Execute</span> the work alongside your team.
           </p>
         </Reveal>
 
@@ -159,7 +169,7 @@ export function Services() {
               href={`#service-${service.num}`}
               className="group flex min-w-0 flex-col justify-between gap-6 bg-background p-5 transition-colors duration-500 hover:bg-warm-white"
             >
-              <span className="type-label text-asa-blue">{service.num}</span>
+              <span className="type-label text-asa-blue">{service.mode}</span>
               <span className="font-display text-[0.98rem] leading-[1.2] tracking-[-0.02em] text-balance">
                 {service.name}
               </span>
