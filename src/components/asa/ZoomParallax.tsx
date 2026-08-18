@@ -69,7 +69,7 @@ export function ZoomParallax() {
   });
 
   return (
-    <div ref={container} className="relative h-[180vh] bg-navy-deep md:h-[210vh]">
+    <div ref={container} className="relative h-[250vh] bg-navy-deep md:h-[300vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {ITEMS.map((item, i) => (
           <Picture key={item.src + i} item={item} progress={scrollYProgress} />
