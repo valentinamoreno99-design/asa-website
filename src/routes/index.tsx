@@ -125,53 +125,53 @@ function Index() {
         <Experience />
 
         {/* Leadership */}
-        <section id="leadership" className="bg-warm-white py-16 md:py-20">
+        <section id="leadership" className="bg-warm-white py-12 md:py-16">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-            <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+            <Reveal className="grid gap-6 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
               <div>
-                <Eyebrow className="mb-8">The leaders</Eyebrow>
-                <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
+                <Eyebrow className="mb-6">The leaders</Eyebrow>
+                <h2 className="type-h3 max-w-[18ch]">Direct access to senior aviation specialists.</h2>
               </div>
-              <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
+              <p className="type-meta max-w-[46ch] self-end text-muted-foreground">
                 You work with people who have held responsibility inside airline engineering and maintenance
                 organizations — not through layers of account management.
               </p>
             </Reveal>
 
-            <div className="mt-10 grid gap-10 border-t border-rule pt-10 md:grid-cols-2 md:gap-12">
+            <div className="mt-8 grid gap-8 border-t border-rule pt-8 md:grid-cols-2 md:gap-10">
               {LEADERS.map((leader) => (
-                <Reveal key={leader.name} className="min-w-0">
+                <Reveal key={leader.name} className="flex min-w-0 items-start gap-5">
                   <img
                     src={leader.photo}
                     alt={`Portrait of ${leader.name}`}
                     loading="lazy"
-                    className="aspect-[3/2] w-full rounded-[8px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
+                    className="h-24 w-24 shrink-0 rounded-[8px] object-cover object-top grayscale transition-all duration-700 hover:grayscale-0 md:h-28 md:w-28"
                   />
-                  <div className="mt-6 flex items-baseline justify-between gap-6 border-t border-rule pt-6">
-                    <p className="type-label text-asa-blue">{leader.role}</p>
-                    <p className="type-meta text-muted-foreground">{leader.years}</p>
+                  <div className="min-w-0">
+                    <h3 className="flex items-center gap-3 font-display text-[clamp(1.25rem,2vw,1.65rem)] leading-[1.05] tracking-[-0.03em]">
+                      {leader.name}
+                      <a
+                        href={leader.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${leader.name} on LinkedIn`}
+                        className="text-muted-foreground/50 transition-colors hover:text-asa-blue"
+                      >
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="h-[0.9rem] w-[0.9rem]" aria-hidden="true">
+                          <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.24 8.25h4.5V24H.24V8.25ZM8.34 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-7.95c0-1.9-.03-4.35-2.65-4.35-2.65 0-3.06 2.07-3.06 4.21V24h-4.5V8.25Z" />
+                        </svg>
+                      </a>
+                    </h3>
+                    <p className="type-label mt-2 text-asa-blue">
+                      {leader.role} <span className="text-muted-foreground">· {leader.years}</span>
+                    </p>
+                    <p className="mt-3 max-w-[44ch] text-[0.9rem] leading-relaxed text-foreground/75">
+                      {leader.statement}
+                    </p>
                   </div>
-                  <h3 className="mt-4 flex items-center gap-3 font-display text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.05] tracking-[-0.03em]">
-                    {leader.name}
-                    <a
-                      href={leader.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${leader.name} on LinkedIn`}
-                      className="text-muted-foreground/50 transition-colors hover:text-asa-blue"
-                    >
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-[1rem] w-[1rem]" aria-hidden="true">
-                        <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.24 8.25h4.5V24H.24V8.25ZM8.34 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-7.95c0-1.9-.03-4.35-2.65-4.35-2.65 0-3.06 2.07-3.06 4.21V24h-4.5V8.25Z" />
-                      </svg>
-                    </a>
-                  </h3>
-                  <p className="mt-5 max-w-[46ch] text-[1rem] leading-relaxed text-foreground/80">
-                    {leader.statement}
-                  </p>
                 </Reveal>
               ))}
             </div>
-
           </div>
         </section>
 
