@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Plus } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { Reveal } from "@/components/Reveal";
+import { Label } from "@/components/ui/label";
 import { submitLead } from "@/lib/leads.functions";
 
 const CALENDLY = "https://calendly.com/valentina-asaviationgroup/30min";
@@ -9,7 +11,18 @@ const CALENDLY = "https://calendly.com/valentina-asaviationgroup/30min";
 const ROTATING = ["challenge", "downtime", "audit finding", "fleet transition", "capability gap"];
 
 const fieldClass =
-  "w-full border-b border-rule-invert bg-transparent py-4 text-[0.95rem] text-primary-foreground placeholder:text-light-blue/40 focus:border-light-blue focus:outline-none";
+  "w-full border-b border-rule-invert bg-transparent py-3 text-[0.95rem] text-primary-foreground placeholder:text-light-blue/35 focus:border-light-blue focus:outline-none";
+
+function CornerPlus() {
+  return (
+    <>
+      <Plus className="absolute -top-[9px] -left-[9px] h-[18px] w-[18px] text-light-blue/60" aria-hidden="true" />
+      <Plus className="absolute -top-[9px] -right-[9px] h-[18px] w-[18px] text-light-blue/60" aria-hidden="true" />
+      <Plus className="absolute -bottom-[9px] -left-[9px] h-[18px] w-[18px] text-light-blue/60" aria-hidden="true" />
+      <Plus className="absolute -right-[9px] -bottom-[9px] h-[18px] w-[18px] text-light-blue/60" aria-hidden="true" />
+    </>
+  );
+}
 
 function RotatingWord() {
   const [index, setIndex] = useState(0);
@@ -67,69 +80,96 @@ export function FinalCTA() {
   }
 
   return (
-    <section id="contact" className="bg-navy-deep py-16 text-primary-foreground md:py-24">
+    <section id="contact" className="bg-navy-deep py-20 text-primary-foreground md:py-28">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-        <Reveal className="border-t border-rule-invert pt-10">
-          <p className="type-label text-light-blue/70">Advise · Train · Execute</p>
-          <h2 className="type-h2 mt-6 max-w-[20ch]">
-            Let&apos;s talk about your <RotatingWord />
-          </h2>
-          <p className="type-lead mt-6 max-w-[52ch] text-light-blue/80">
-            A 30-minute conversation with an ASA specialist — not an account manager. Tell us who you are and book
-            directly.
-          </p>
-        </Reveal>
+        <Reveal className="mx-auto max-w-[62rem]">
+          <div className="relative border border-rule-invert bg-white/[0.03] px-6 py-10 sm:px-10 md:px-14 md:py-14">
+            <CornerPlus />
 
-        <Reveal delay={80} className="mt-12 grid gap-10 border-t border-rule-invert pt-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-          {state === "done" ? (
-            <div className="min-w-0">
-              <p className="type-h3 max-w-[26ch]">Thank you — pick a time that works for you.</p>
-              <a
-                href={CALENDLY}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="type-label mt-8 inline-block bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy"
-              >
-                Open the booking page
-              </a>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="min-w-0">
-              <div className="grid gap-x-10 sm:grid-cols-3">
-                <label className="block">
-                  <span className="type-label text-light-blue/70">Name</span>
-                  <input name="name" required maxLength={120} className={fieldClass} placeholder="Full name" />
-                </label>
-                <label className="block">
-                  <span className="type-label text-light-blue/70">Company</span>
-                  <input name="company" required maxLength={160} className={fieldClass} placeholder="Organization" />
-                </label>
-                <label className="block">
-                  <span className="type-label text-light-blue/70">Role</span>
-                  <input name="role" maxLength={160} className={fieldClass} placeholder="Position" />
-                </label>
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-16">
+              <div className="min-w-0">
+                <p className="type-label text-light-blue/70">Advise · Train · Execute</p>
+                <h2 className="type-h2 mt-6 max-w-[16ch]">
+                  Let&apos;s talk about your <RotatingWord />
+                </h2>
+                <p className="type-lead mt-6 max-w-[42ch] text-light-blue/80">
+                  A 30-minute conversation directly with an ASA specialist — not an account manager.
+                </p>
+                <p className="type-meta mt-8 max-w-[36ch] border-t border-rule-invert pt-6 text-light-blue/60">
+                  Prefer email? Write to{" "}
+                  <a href="mailto:contact@asaviationgroup.com" className="link-underline text-primary-foreground">
+                    contact@asaviationgroup.com
+                  </a>
+                </p>
               </div>
 
-              {state === "error" ? <p className="type-meta mt-6 text-light-blue">{error}</p> : null}
+              <div className="min-w-0 lg:border-l lg:border-rule-invert lg:pl-16">
+                {state === "done" ? (
+                  <div>
+                    <p className="type-h3 max-w-[24ch]">Thank you — pick a time that works for you.</p>
+                    <a
+                      href={CALENDLY}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="type-label mt-8 inline-block bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy"
+                    >
+                      Open the booking page
+                    </a>
+                  </div>
+                ) : (
+                  <form onSubmit={onSubmit} className="grid gap-6">
+                    <div>
+                      <Label htmlFor="cta-name" className="type-label text-light-blue/70">
+                        Name
+                      </Label>
+                      <input
+                        id="cta-name"
+                        name="name"
+                        required
+                        maxLength={120}
+                        className={fieldClass}
+                        placeholder="Full name"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="cta-company" className="type-label text-light-blue/70">
+                        Company
+                      </Label>
+                      <input
+                        id="cta-company"
+                        name="company"
+                        required
+                        maxLength={160}
+                        className={fieldClass}
+                        placeholder="Organization"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="cta-role" className="type-label text-light-blue/70">
+                        Role
+                      </Label>
+                      <input
+                        id="cta-role"
+                        name="role"
+                        maxLength={160}
+                        className={fieldClass}
+                        placeholder="Position"
+                      />
+                    </div>
 
-              <button
-                type="submit"
-                disabled={state === "sending"}
-                className="type-label mt-10 inline-block bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy disabled:opacity-60"
-              >
-                {state === "sending" ? "One moment…" : "Book 30 minutes with a specialist"}
-              </button>
-            </form>
-          )}
+                    {state === "error" ? <p className="type-meta text-light-blue">{error}</p> : null}
 
-          <div className="min-w-0 self-end">
-            <p className="type-meta max-w-[36ch] text-light-blue/70">
-              Prefer email? Write to{" "}
-              <a href="mailto:contact@asaviationgroup.com" className="link-underline text-primary-foreground">
-                contact@asaviationgroup.com
-              </a>{" "}
-              and we will come back with a clear view of scope and the right technical profile.
-            </p>
+                    <button
+                      type="submit"
+                      disabled={state === "sending"}
+                      className="type-label mt-2 w-full bg-asa-blue px-8 py-5 transition-colors hover:bg-background hover:text-navy disabled:opacity-60"
+                    >
+                      {state === "sending" ? "One moment…" : "Book 30 minutes with a specialist"}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

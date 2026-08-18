@@ -183,8 +183,8 @@ function Index() {
 
       <footer className="bg-navy-deep pt-16 pb-10 text-primary-foreground">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-          <div className="grid gap-10 border-t border-rule-invert pt-10 md:grid-cols-2">
-            <div>
+          <div className="grid gap-10 border-t border-rule-invert pt-10 md:grid-cols-3 md:gap-12">
+            <div className="min-w-0">
               <img
                 src={logoLight.url}
                 alt="ASA — Advanced Solutions Aviation"
@@ -196,24 +196,28 @@ function Index() {
               <p className="type-meta mt-6 max-w-[30ch] text-primary-foreground/60">
                 Expertise that drives operational excellence.
               </p>
+              <p className="type-label mt-6 text-light-blue/80">Advise. Train. Execute.</p>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="type-label mb-6 text-light-blue/70">Contact</p>
               <a
                 href="mailto:contact@asaviationgroup.com"
-                className="type-meta flex items-center gap-3 text-primary-foreground/80 transition-colors hover:text-light-blue"
+                className="type-meta flex items-start gap-3 text-primary-foreground/80 transition-colors hover:text-light-blue"
               >
-                <Mail className="h-4 w-4 shrink-0 text-light-blue/70" aria-hidden="true" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-light-blue/70" aria-hidden="true" />
                 <span className="link-underline min-w-0 break-all">contact@asaviationgroup.com</span>
               </a>
-              <address className="type-meta mt-4 flex gap-3 not-italic text-primary-foreground/70">
+            </div>
+
+            <div className="min-w-0">
+              <p className="type-label mb-6 text-light-blue/70">Office</p>
+              <address className="type-meta flex gap-3 not-italic text-primary-foreground/70">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-light-blue/70" aria-hidden="true" />
                 <span className="min-w-0 leading-[1.35] whitespace-pre-line">
                   {"Advanced Solutions Aviation LLC\n1401 Brickell Avenue Ste 330\nMiami, Florida 33131"}
                 </span>
               </address>
-              <p className="type-meta mt-6 text-primary-foreground/60">Advise. Train. Execute.</p>
             </div>
           </div>
 

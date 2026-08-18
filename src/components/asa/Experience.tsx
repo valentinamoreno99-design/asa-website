@@ -1,21 +1,5 @@
 import { Reveal } from "@/components/Reveal";
-import { Eyebrow } from "@/components/asa/Eyebrow";
 import camo from "@/assets/airthworthiness-camo.png.asset.json";
-
-const METRICS = [
-  { value: "10+", label: "Years of prior operational experience", meta: "Average, per ASA consultant, before joining" },
-  { value: "20+", label: "Technical courses available" },
-  { value: "350+", label: "Professionals trained" },
-];
-
-const REGIONS = ["Europe", "Africa", "Americas"];
-
-const ENVIRONMENTS = [
-  "Airlines",
-  "MROs",
-  "Lessors and asset owners",
-  "Engineering and technical organisations",
-];
 
 const CASE_RESULTS = [
   { value: "+38%", label: "Structural diagnostics" },
@@ -26,67 +10,6 @@ const CASE_RESULTS = [
 export function Experience() {
   return (
     <section id="experience">
-      {/* Dark band — what we have achieved */}
-      <div className="bg-navy-deep py-14 text-primary-foreground md:py-20">
-        <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-          <Reveal className="border-t border-rule-invert pt-8">
-            <Eyebrow num="05" invert>
-              What we have achieved
-            </Eyebrow>
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-              <h2 className="type-h2 max-w-[18ch]">Results built in real aviation operations.</h2>
-              <p className="type-lead max-w-[48ch] self-end text-light-blue/80">
-                Engineering, maintenance, planning and technical control responsibilities carried inside airlines and
-                MROs — where availability, compliance and cost were measured daily.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80} className="mt-14 grid border-y border-rule-invert sm:grid-cols-2 lg:grid-cols-3">
-            {METRICS.map((metric) => (
-              <div
-                key={metric.label}
-                className="border-b border-rule-invert py-8 transition-colors duration-500 hover:bg-white/[0.02] last:border-b-0 lg:border-b-0 lg:border-r lg:px-10 lg:py-12 lg:first:pl-0 lg:last:border-r-0"
-              >
-                <p className="font-display text-[clamp(2.5rem,4.4vw,3.75rem)] leading-[0.9] tracking-[-0.045em] text-asa-blue">
-                  {metric.value}
-                </p>
-                <p className="type-label mt-5 max-w-[24ch] text-primary-foreground">{metric.label}</p>
-                {metric.meta ? <p className="type-meta mt-2 max-w-[26ch] text-primary-foreground/55">{metric.meta}</p> : null}
-              </div>
-            ))}
-          </Reveal>
-
-          <Reveal delay={120} className="mt-12 grid gap-12 border-b border-rule-invert pb-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <p className="type-label text-light-blue/90">Experience built across</p>
-              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-                {REGIONS.map((region) => (
-                  <span
-                    key={region}
-                    className="font-display text-[clamp(1.6rem,2.8vw,2.5rem)] leading-[1.05] tracking-[-0.03em]"
-                  >
-                    {region}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="type-label text-light-blue/90">The environments our people have worked inside</p>
-              <ul className="mt-5 divide-y divide-rule-invert">
-                {ENVIRONMENTS.map((env) => (
-                  <li key={env} className="type-label py-3.5 text-primary-foreground/80 first:pt-0 last:pb-0">
-                    {env}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-        </div>
-      </div>
-
       {/* Dark band — anonymous case study, presented as a distinct card */}
       <div className="bg-navy py-14 text-primary-foreground md:py-20">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
