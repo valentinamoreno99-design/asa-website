@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import camo from "@/assets/airthworthiness-camo.png.asset.json";
-import maintenance from "@/assets/maintenace-line.png.asset.json";
-import planning from "@/assets/planning.png.asset.json";
-import trainings from "@/assets/technical-trainings.png.asset.json";
-import courses from "@/assets/especialized-courses.jpeg.asset.json";
-import transfers from "@/assets/transfers.jpeg.asset.json";
+import camo from "@/assets/ops-1.jpeg.asset.json";
+import maintenance from "@/assets/ops-5.jpeg.asset.json";
+import planning from "@/assets/ops-3.jpeg.asset.json";
+import trainings from "@/assets/ops-4.jpeg.asset.json";
+import courses from "@/assets/ops-6.jpeg.asset.json";
+import transfers from "@/assets/ops-2.jpeg.asset.json";
 import hero from "@/assets/hero-asa.jpg.asset.json";
 
 type Item = {
@@ -25,37 +25,37 @@ const ITEMS: Item[] = [
   },
   {
     src: camo.url,
-    alt: "Aircraft on the apron during scheduled maintenance",
+    alt: "Close-up of an engine nacelle and fan on the apron",
     className: "-top-[28vh] left-[6vw] h-[26vh] w-[32vw] min-w-[220px]",
     scaleFactor: 5,
   },
   {
     src: maintenance.url,
-    alt: "Line maintenance technicians working on an aircraft",
+    alt: "Aircraft on jacks during landing-gear maintenance in the hangar",
     className: "-top-[10vh] -left-[30vw] h-[24vh] w-[26vw] min-w-[200px]",
     scaleFactor: 6,
   },
   {
     src: planning.url,
-    alt: "Maintenance planning and technical records review",
+    alt: "Engine fan blades inspected up close",
     className: "top-[28vh] left-[2vw] h-[22vh] w-[24vw] min-w-[200px]",
     scaleFactor: 5,
   },
   {
     src: trainings.url,
-    alt: "Technical training session for aviation professionals",
+    alt: "Fluorescent penetrant inspection of an aircraft structure",
     className: "top-[26vh] -left-[26vw] h-[20vh] w-[22vw] min-w-[180px]",
     scaleFactor: 6,
   },
   {
     src: courses.url,
-    alt: "Specialized aviation course in a classroom",
+    alt: "Widebody aircraft nose view on the apron during ground checks",
     className: "top-[4vh] left-[30vw] h-[22vh] w-[24vw] min-w-[200px]",
     scaleFactor: 8,
   },
   {
     src: transfers.url,
-    alt: "Aircraft transition and delivery process",
+    alt: "White-tail widebody aircraft ready for delivery",
     className: "-top-[26vh] -left-[16vw] h-[22vh] w-[22vw] min-w-[180px]",
     scaleFactor: 9,
   },

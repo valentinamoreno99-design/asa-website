@@ -60,14 +60,6 @@ const LEADERS = [
 ];
 
 
-const FOOTER_NAV = [
-  { label: "Challenges", href: "#challenges" },
-  { label: "Services", href: "#services" },
-  { label: "Why ASA", href: "#why-asa" },
-  { label: "Experience", href: "#experience" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Contact", href: "#contact" },
-];
 
 function Index() {
   return (
@@ -191,7 +183,7 @@ function Index() {
 
       <footer className="bg-navy-deep pt-16 pb-10 text-primary-foreground">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-          <div className="grid gap-10 border-t border-rule-invert pt-10 md:grid-cols-3">
+          <div className="grid gap-10 border-t border-rule-invert pt-10 md:grid-cols-2">
             <div>
               <img
                 src={logoLight.url}
@@ -205,20 +197,6 @@ function Index() {
                 Expertise that drives operational excellence.
               </p>
             </div>
-
-            <nav className="flex flex-col gap-3.5">
-              <p className="type-label mb-2 text-light-blue/70">Navigation</p>
-              {FOOTER_NAV.map((item, i) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="type-label flex gap-4 text-primary-foreground/70 transition-colors hover:text-light-blue"
-                >
-                  <span className="text-asa-blue">{String(i + 1).padStart(2, "0")}</span>
-                  {item.label}
-                </a>
-              ))}
-            </nav>
 
             <div>
               <p className="type-label mb-6 text-light-blue/70">Contact</p>
