@@ -30,8 +30,8 @@ export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProp
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: el.closest("[aria-label='Our commitment']") || el,
-        start: "top 80%",
-        end: "bottom 20%",
+        start: "top top",
+        end: "bottom bottom",
         scrub: 0.8,
         onUpdate: (self) => {
           const idx = Math.min(Math.floor(self.progress * items.length), items.length - 1);
