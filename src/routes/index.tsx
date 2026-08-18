@@ -129,9 +129,7 @@ function Index() {
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <Reveal className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
               <div>
-                <Eyebrow num="06" className="mb-8">
-                  The leaders
-                </Eyebrow>
+                <Eyebrow className="mb-8">The leaders</Eyebrow>
                 <h2 className="type-h2 max-w-[16ch]">Senior experience behind every decision.</h2>
               </div>
               <p className="type-lead max-w-[46ch] self-end text-muted-foreground">
