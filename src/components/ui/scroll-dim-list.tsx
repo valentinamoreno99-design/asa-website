@@ -11,6 +11,8 @@ type ScrollDimListProps = {
 /**
  * Single-line scroll-driven phrase switcher. Only the active phrase is
  * rendered, fading to electric blue as the user scrolls through the section.
+ * The trigger range is deliberately long so each phrase stays visible for a
+ * meaningful scroll distance.
  */
 export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProps) {
   const root = useRef<HTMLSpanElement>(null);
@@ -28,9 +30,9 @@ export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProp
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: el.closest("[aria-label='Our commitment']") || el,
-        start: "top center",
-        end: "bottom center",
-        scrub: 0.5,
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: 0.8,
         onUpdate: (self) => {
           const idx = Math.min(Math.floor(self.progress * items.length), items.length - 1);
           setActiveIndex(idx);
@@ -47,10 +49,11 @@ export function ScrollDimList({ items, lead, className = "" }: ScrollDimListProp
 
       <span
         data-dim-phrase
-        className="font-display text-[clamp(1.05rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.03em] text-[var(--electric-blue)] transition-opacity duration-500"
+        className="inline-block whitespace-nowrap font-display text-[clamp(1.05rem,2.2vw,1.75rem)] md:text-[clamp(1.25rem,2.8vw,2.25rem)] leading-[1.2] tracking-[-0.03em] text-[var(--electric-blue)] transition-opacity duration-500"
       >
         {items[activeIndex]}
       </span>
     </span>
   );
 }
+
