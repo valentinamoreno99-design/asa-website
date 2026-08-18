@@ -2,59 +2,53 @@ import { createClient } from "@supabase/supabase-js";
 import type { LeadInput } from "./leads.functions";
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_sheets/v4";
-const NOTIFY_EMAIL = "valentina@asaviationgroup.com";
+const SPREADSHEET_ID = "1gJV-ROKBYbCSSsUKNFUuQ4gGDsdY5GOrwWt49ygt4gQ";
+const SHEET_RANGE = "Leads!A:F";
 
-type DeliveryResult = { ok: boolean; stored: boolean; notified: boolean };
+type DeliveryResult = { ok: boolean; userId: string; duplicate: boolean };
 
-async function saveToDatabase(lead: LeadInput): Promise<boolean> {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
-  if (!url || !key) return false;
-
-  const supabase = createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-  const { error } = await supabase.from("leads").insert({
-    name: lead.name,
-    company: lead.company,
-    role: lead.role,
-    email: lead.email,
-    focus: lead.focus,
-    message: lead.message,
-  });
-  if (error) {
-    console.error(`Lead insert failed: ${error.message}`);
-    return false;
-  }
-  return true;
-}
-
-
-async function appendToSheet(lead: LeadInput): Promise<boolean> {
+function gatewayHeaders() {
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const sheetsKey = process.env["GOOGLE_SHEETS_API_KEY"];
-  const spreadsheetId = process.env["ASA_LEADS_SPREADSHEET_ID"];
-  if (!lovableKey || !sheetsKey || !spreadsheetId) return false;
+  if (!lovableKey || !sheetsKey) {
+    throw new Error("Lead storage is not configured. Please try again later.");
+  }
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${lovableKey}`,
+    "X-Connection-Api-Key": sheetsKey,
+  };
+}
 
+/** True when this submission id already has a row — guards against double submits. */
+async function alreadyStored(submissionId: string): Promise<boolean> {
+  const res = await fetch(`${GATEWAY_URL}/spreadsheets/${SPREADSHEET_ID}/values/Leads!A2:A`, {
+    headers: gatewayHeaders(),
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    console.error(`Google Sheets read failed [${res.status}]: ${body}`);
+    throw new Error("We couldn't reach the lead sheet. Please try again.");
+  }
+  const json = (await res.json()) as { values?: string[][] };
+  return (json.values ?? []).some((row) => row[0] === submissionId);
+}
+
+async function appendToSheet(lead: LeadInput): Promise<void> {
   const row = [
+    lead.submissionId,
     new Date().toISOString(),
     lead.name,
     lead.company,
     lead.role,
-    lead.email,
-    lead.focus,
-    lead.message,
+    lead.source || "Website CTA",
   ];
 
   const res = await fetch(
-    `${GATEWAY_URL}/spreadsheets/${spreadsheetId}/values/Leads!A:G:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+    `${GATEWAY_URL}/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_RANGE}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${lovableKey}`,
-        "X-Connection-Api-Key": sheetsKey,
-      },
+      headers: gatewayHeaders(),
       body: JSON.stringify({ values: [row] }),
     },
   );
@@ -62,29 +56,38 @@ async function appendToSheet(lead: LeadInput): Promise<boolean> {
   if (!res.ok) {
     const body = await res.text();
     console.error(`Google Sheets append failed [${res.status}]: ${body}`);
-    return false;
+    throw new Error("We couldn't save your details. Please try again.");
   }
-  return true;
 }
 
-async function notifyByEmail(lead: LeadInput): Promise<boolean> {
-  // Email notifications to NOTIFY_EMAIL are wired once the ASA sender domain is verified.
-  void lead;
-  void NOTIFY_EMAIL;
-  return false;
+/** Best-effort mirror into the backend so internal tooling keeps working. */
+async function mirrorToDatabase(lead: LeadInput): Promise<void> {
+  const url = process.env["SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return;
+
+  try {
+    const supabase = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+    const { error } = await supabase.from("leads").insert({
+      name: lead.name,
+      company: lead.company,
+      role: lead.role,
+    });
+    if (error) console.error(`Lead mirror failed: ${error.message}`);
+  } catch (err) {
+    console.error("Lead mirror threw:", err instanceof Error ? err.message : err);
+  }
 }
-
-
 
 export async function deliverLead(lead: LeadInput): Promise<DeliveryResult> {
-  const [saved, appended, notified] = await Promise.all([
-    saveToDatabase(lead),
-    appendToSheet(lead),
-    notifyByEmail(lead),
-  ]);
-  const stored = saved || appended;
-  if (!stored && !notified) {
-    console.error("Lead received but no delivery channel is configured:", lead.email);
+  if (await alreadyStored(lead.submissionId)) {
+    return { ok: true, userId: lead.submissionId, duplicate: true };
   }
-  return { ok: true, stored, notified };
+
+  await appendToSheet(lead);
+  await mirrorToDatabase(lead);
+
+  return { ok: true, userId: lead.submissionId, duplicate: false };
 }

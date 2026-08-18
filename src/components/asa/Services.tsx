@@ -105,8 +105,8 @@ function ServiceBlock({ service, flip }: { service: Service; flip: boolean }) {
       className="scroll-mt-28 grid gap-7 border-t border-rule py-8 md:py-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-12"
     >
       <div className={`min-w-0 ${flip ? "lg:order-2" : ""}`}>
-        <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-x-8">
-          <span className="font-display text-[clamp(1.75rem,2.8vw,2.75rem)] leading-none tracking-[-0.04em] text-asa-blue/30">
+        <div className="grid grid-cols-1 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-x-8">
+          <span className="hidden font-display text-[clamp(1.75rem,2.8vw,2.75rem)] leading-none tracking-[-0.04em] text-asa-blue/30 md:block">
             {service.num}
           </span>
           <div className="min-w-0">

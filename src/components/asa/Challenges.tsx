@@ -83,14 +83,6 @@ export function Challenges() {
                     aria-hidden="true"
                   />
 
-                  <span
-                    className={`type-label transition-colors duration-500 ${
-                      isActive ? "text-primary-foreground/80" : "text-light-blue"
-                    }`}
-                  >
-                    {item.num}
-                  </span>
-
                   <div className="mt-10 min-w-0">
                     <h3 className="font-display text-[clamp(1.3rem,2.1vw,1.9rem)] leading-[1.05] tracking-[-0.03em]">
                       {item.title}
